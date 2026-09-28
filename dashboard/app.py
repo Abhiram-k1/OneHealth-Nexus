@@ -827,62 +827,130 @@ elif page == "Methodology & Evaluation":
     st.markdown("""
     <div class="header-box">
         <div class="header-title" style="color: #000000 !important; font-size: 28px; font-weight: 800; line-height: 1.2;">
-            System Methodology & Mid-Semester Implementation
+            Mid-Semester Evaluation & 10-Week Implementation Plan
         </div>
         <div class="header-subtitle" style="color: #1e293b !important; font-size: 14px; margin-top: 8px; line-height: 1.5; font-weight: 500;">
-            Architecture pipeline, data flow specifications, and evaluation criteria for the Phase 1 defense.
+            Architectural methodology, 3-phase engineering progression, current 60% milestone audit, and end-semester roadmap.
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-    pipeline_stages = [
-        ("01", "Multi-Source Data Ingestion", "Ingestion from WHO Outbreak News (50), PubMed NCBI (2,500), and GBIF Occurrence API (3,000) totaling 5,550 validated data points."),
-        ("02", "Distributed Batch Preprocessing", "Apache Spark (Scala + PySpark) pipeline performing schema harmonization, null-value reconciliation, deduplication, and coordinate bounding."),
-        ("03", "Biomedical Information Extraction", "spaCy en_core_web_sm pipeline and regex fallback extracting Disease, Pathogen, Host Animal, Location, and Date entities."),
-        ("04", "Knowledge Graph Construction", "NetworkX graph construction generating 4,796 nodes and 12,471 directed transmission relationships across 6 entity classes."),
-        ("05", "Spatio-Temporal & Signal Analytics", "Longitudinal 53-year trend modeling (1965–2027) and composite mathematical risk scoring for emerging pathogen alerts."),
-        ("06", "Decision Support Intelligence Center", "Interactive Streamlit web application providing epidemiological filtering, GIS mapping, and graph topology inspection.")
-    ]
+    # High-level Progress KPIs
+    k1, k2, k3, k4 = st.columns(4)
+    k1.metric("Overall Completion", "60.0%", "Mid-Semester Gate")
+    k2.metric("Data Lake Scale", "5,550 Records", "55.5% of 10k Goal")
+    k3.metric("Current Timeline", "Week 6 / 10", "Phase 2 Active")
+    k4.metric("Knowledge Graph", "4,796 Nodes", "12,471 Edges")
 
-    for num, title, desc in pipeline_stages:
-        st.markdown(f"""
-        <div class="stage-card">
-            <div class="stage-num">Stage {num}</div>
-            <div class="stage-title" style="color:#000000 !important;">{title}</div>
-            <div class="stage-desc" style="color:#334155 !important;">{desc}</div>
+    st.markdown("<div style='height: 16px;'></div>", unsafe_allow_html=True)
+
+    # 1. Progress Breakdown Visual
+    progress_img = "analysis/midsem_progress_breakdown.png"
+    if os.path.exists(progress_img):
+        st.markdown('<div class="section-title" style="color:#000000 !important; font-size:20px; font-weight:750;">Mid-Semester Subsystem Completion Matrix</div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-subtitle" style="color:#334155 !important; font-weight:500;">Quantitative engineering audit across all 8 architectural modules (Overall: 60% Complete).</div>', unsafe_allow_html=True)
+        st.image(progress_img, caption="Figure 7: Mid-Semester Completion Status (60% Delivered vs 40% Remaining End-Semester Scope)", use_container_width=True)
+
+    st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
+
+    # 2. 10-Week Timeline & Roadmap Visual
+    roadmap_img = "analysis/midsem_timeline_roadmap.png"
+    if os.path.exists(roadmap_img):
+        st.markdown('<div class="section-title" style="color:#000000 !important; font-size:20px; font-weight:750;">Ten-Week Project Roadmap & 3-Phase Schedule</div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-subtitle" style="color:#334155 !important; font-weight:500;">Gantt timeline mapping all 12 tasks across Phases 1, 2, and 3, highlighting the Week 6 Mid-Semester Review Gateway.</div>', unsafe_allow_html=True)
+        st.image(roadmap_img, caption="Figure 8: 10-Week Gantt Timeline Highlighting the Week 6 Evaluation Milestone", use_container_width=True)
+
+    st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
+
+    # 3. Three-Phase Architecture Overview
+    st.markdown('<div class="section-title" style="color:#000000 !important; font-size:20px; font-weight:750;">Three-Phase Engineering Framework</div>', unsafe_allow_html=True)
+
+    p_cols = st.columns(3)
+
+    with p_cols[0]:
+        st.markdown("""
+        <div style="background:#ffffff; border:1px solid #cbd5e1; border-top:4px solid #16a34a; border-radius:8px; padding:18px; height:100%;">
+            <div style="font-size:11px; font-weight:700; color:#16a34a; text-transform:uppercase;">Phase 1: Foundation (Weeks 1–4)</div>
+            <div style="font-size:16px; font-weight:800; color:#000000; margin-top:4px;">Data Lake & Batch Core</div>
+            <div style="font-size:12px; color:#16a34a; font-weight:700; margin-top:2px;">STATUS: 100% COMPLETE</div>
+            <div style="font-size:13px; color:#334155; margin-top:10px; line-height:1.6;">
+                • Harvested 5,550 multi-source points (WHO, PubMed, GBIF)<br>
+                • Apache Spark batch deduplication (Scala 4.0.1)<br>
+                • Schema harmonization & coordinate bounding<br>
+                • Regex & spaCy biomedical NER extraction
+            </div>
         </div>
         """, unsafe_allow_html=True)
 
-    st.markdown("<div style='height: 16px;'></div>", unsafe_allow_html=True)
-    st.markdown('<div class="section-title" style="color:#000000 !important; font-size:20px; font-weight:750;">Mid-Semester Milestone Evaluation Matrix</div>', unsafe_allow_html=True)
+    with p_cols[1]:
+        st.markdown("""
+        <div style="background:#ffffff; border:1px solid #cbd5e1; border-top:4px solid #ea580c; border-radius:8px; padding:18px; height:100%;">
+            <div style="font-size:11px; font-weight:700; color:#ea580c; text-transform:uppercase;">Phase 2: Analytics (Weeks 5–7)</div>
+            <div style="font-size:16px; font-weight:800; color:#000000; margin-top:4px;">Knowledge Graph & Prototype</div>
+            <div style="font-size:12px; color:#ea580c; font-weight:700; margin-top:2px;">STATUS: 85% (WEEK 6 GATEWAY)</div>
+            <div style="font-size:13px; color:#334155; margin-top:10px; line-height:1.6;">
+                • Multi-relational graph (4,796 nodes, 12,471 edges)<br>
+                • 53-year longitudinal surveillance (1965–2027)<br>
+                • Geospatial hotspot mapping (3,000 GPS points)<br>
+                • 4-factor composite risk formula & 7-screen UI
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with p_cols[2]:
+        st.markdown("""
+        <div style="background:#ffffff; border:1px solid #cbd5e1; border-top:4px solid #2563eb; border-radius:8px; padding:18px; height:100%;">
+            <div style="font-size:11px; font-weight:700; color:#2563eb; text-transform:uppercase;">Phase 3: AI & Scale (Weeks 8–10)</div>
+            <div style="font-size:16px; font-weight:800; color:#000000; margin-top:4px;">Predictive GNNs & Production</div>
+            <div style="font-size:12px; color:#2563eb; font-weight:700; margin-top:2px;">STATUS: PLANNED (REMAINING 40%)</div>
+            <div style="font-size:13px; color:#334155; margin-top:10px; line-height:1.6;">
+                • Ingestion scaling to 10,000+ points (ProMED, FAO)<br>
+                • BioLinkBERT fine-tuning for relation extraction<br>
+                • Graph Neural Network (GNN) spillover link prediction<br>
+                • Neo4j database migration & cloud deployment
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
+
+    # 4. Detailed Evaluation Matrix
+    st.markdown('<div class="section-title" style="color:#000000 !important; font-size:20px; font-weight:750;">Mid-Semester Milestone Audit Matrix</div>', unsafe_allow_html=True)
 
     matrix_data = {
-        "Component": [
+        "Subsystem": [
             "Data Lake Volume",
             "Distributed Processing",
             "Information Extraction",
             "Knowledge Representation",
-            "Risk Quantification",
-            "Interactive Dashboard"
+            "Spatio-Temporal Analytics",
+            "Risk Scoring Model",
+            "Surveillance Interface",
+            "Database & Production"
         ],
-        "Phase 1 Delivered (Mid-Semester)": [
-            "5,550 records (55.5% achieved; 3,000 GBIF + 2,500 PubMed + 50 WHO)",
-            "Local Scala Spark 4.0.1 + PySpark automated batch pipeline",
-            "Hybrid spaCy NER + high-speed biomedical regex extraction",
-            "4,796 nodes, 12,471 edges, in-degree transmission hubs",
-            "Composite 4-factor risk scoring formula across 53 years",
-            "7-page operational surveillance intelligence dashboard"
+        "Delivered at Mid-Semester (60%)": [
+            "5,550 validated points (3,000 GBIF + 2,500 PubMed + 50 WHO)",
+            "Scala Apache Spark 4.0.1 + PySpark automated batch pipeline",
+            "spaCy en_core_web_sm + fast-path regex for 5 entity classes",
+            "4,796 nodes, 12,471 typed edges, degree centrality rankings",
+            "53-year historical surge curve + 3,000 GPS point density map",
+            "Rule-based compound risk score (velocity, growth, sources, degree)",
+            "7-page operational surveillance dashboard in Streamlit",
+            "Local PowerShell self-healing automation (.venv, sbt)"
         ],
-        "Phase 2 Target (End-Semester)": [
-            "10,000+ records (ProMED, FAO EMPRES-i, GISAID integration)",
-            "Dataproc Serverless cluster deployment on Google Cloud",
-            "Fine-tuned BioLinkBERT transformer embeddings for relation classification",
-            "Neo4j persistent graph database with Cypher query endpoints",
-            "Graph Neural Network (GNN) link prediction for spillover forecasting",
-            "Automated alert notification service and REST API layer"
-        ]
+        "Planned for End-Semester (Remaining 40%)": [
+            "Scale past 10,000 points via ProMED-mail, FAO EMPRES-i, and GISAID",
+            "GCP Dataproc Serverless cloud cluster multi-node execution",
+            "Fine-tuned BioLinkBERT transformer for complex biomedical relations",
+            "Neo4j Enterprise Graph Database with persistent Cypher endpoints",
+            "Kulldorff spatial scan statistic & DBSCAN spatio-temporal clustering",
+            "Graph Neural Network (R-GCN / Node2Vec) spillover link prediction",
+            "Automated alert notification system (Email/Webhook) & REST API",
+            "Docker containerization, CI/CD pipeline, and Cloud Run hosting"
+        ],
+        "Completion %": ["55.5%", "95.0%", "75.0%", "70.0%", "85.0%", "40.0%", "90.0%", "20.0%"]
     }
-    st.table(pd.DataFrame(matrix_data))
+    st.dataframe(pd.DataFrame(matrix_data), use_container_width=True, hide_index=True)
 
 # ============================================================
 # INSTITUTIONAL FOOTER

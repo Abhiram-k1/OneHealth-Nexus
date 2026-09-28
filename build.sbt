@@ -1,0 +1,12 @@
+ThisBuild / scalaVersion := "2.13.16"
+
+lazy val root = (project in file("."))
+  .settings(
+    name := "OneHealth-Nexus",
+    version := "0.1.0",
+
+    libraryDependencies ++= Seq(
+      "org.apache.spark" %% "spark-core" % "4.0.1",
+      "org.apache.spark" %% "spark-sql"  % "4.0.1"
+    )
+  )

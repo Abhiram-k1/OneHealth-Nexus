@@ -1,0 +1,12 @@
+.venv/
+.idea/
+.vscode/
+target/
+project/target/
+.bsp/
+.metals/
+.bloop/
+*.log
+__pycache__/
+*.pyc
+.env

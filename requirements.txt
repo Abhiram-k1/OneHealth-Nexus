@@ -1,0 +1,10 @@
+pandas>=2.2,<3
+numpy>=1.26,<3
+scikit-learn>=1.5,<2
+networkx>=3.3,<4
+plotly>=5.20,<7
+streamlit>=1.40,<2
+python-dateutil>=2.9,<3
+neo4j>=5.20,<7
+spacy>=3.7,<4
+matplotlib>=3.8,<4

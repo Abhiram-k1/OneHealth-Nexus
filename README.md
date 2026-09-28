@@ -14,13 +14,13 @@ Emerging infectious diseases (EIDs) pose severe threats to global biosecurity an
 
 Because these domains are analyzed in isolation, cross-species transmission pathways, reservoir host distributions, and early warning signals of disease emergence often remain hidden until widespread outbreaks occur.
 
-**OneHealth Nexus** addresses this gap by engineering an integrated, large-scale analytical framework that unifies distributed Big Data processing, natural language processing (NLP), temporal knowledge graphs, and geospatial biodiversity analytics. Using **Apache Spark 4.0.1** and **Scala 2.13.16**, raw heterogeneous textual records are cleaned, deduplicated, and transformed into 2,550 standardized documents. An NLP pipeline powered by **spaCy** extracts multi-domain biomedical entities (diseases, pathogens, animal hosts, geographic locations, and dates) and maps their semantic relationships. A directed Knowledge Graph built with **NetworkX** models **2,720 entities and 10,946 semantic relationships**, enabling network topology and centrality analysis. Spatio-temporal intelligence modules analyze longitudinal disease patterns across 53 calendar years (1965–2027) and spatial animal host occurrences across India (**3,000 GPS coordinates**, Lat $6.94^\circ - 33.82^\circ\text{ N}$, Lon $68.97^\circ - 95.95^\circ\text{ E}$). An analytical **Emerging Signal Indicator** synthesizes recency, source diversity, and mention volume to rank potential disease threats. The complete intelligence layer is deployed via an interactive, high-performance **Streamlit Dashboard** featuring seven dedicated intelligence modules.
+**OneHealth Nexus** addresses this gap by engineering an integrated, large-scale analytical framework that unifies distributed Big Data processing, natural language processing (NLP), temporal knowledge graphs, and geospatial biodiversity analytics. Using **Apache Spark 4.0.1** and **Scala 2.13.16**, raw heterogeneous textual records are cleaned, deduplicated, and transformed into 5,050 standardized documents. An NLP pipeline powered by **spaCy** extracts multi-domain biomedical entities (diseases, pathogens, animal hosts, geographic locations, and dates) and maps their semantic relationships. A directed Knowledge Graph built with **NetworkX** models **5,220 entities and 21,043 semantic relationships**, enabling network topology and centrality analysis. Spatio-temporal intelligence modules analyze longitudinal disease patterns across 53 calendar years (1965–2027) and spatial animal host occurrences across India (**5,500 GPS coordinates**, Lat $6.94^\circ - 33.82^\circ\text{ N}$, Lon $68.21^\circ - 95.95^\circ\text{ E}$). An analytical **Emerging Signal Indicator** synthesizes recency, source diversity, and mention volume to rank potential disease threats. The complete intelligence layer is deployed via an interactive, high-performance **Streamlit Dashboard** featuring seven dedicated intelligence modules.
 
 ---
 
-## Data Milestone Status: Achieving 5,550+ Points Toward 10k Target
+## Data Milestone Status: 10,550 Data Points Ingested (100% Target Met)
 
-The platform is designed around a multi-stage data scaling architecture aiming for **10,000+ multi-modal data points**. Currently, **5,550 verified data points (>55% of the final milestone)** are fully ingested, cleaned, and integrated into the active analytics engine:
+The platform is designed around a multi-stage data scaling architecture requiring **at least 10,000 multi-modal data points** for the complete project. Ahead of the mid-semester evaluation, **10,550 verified data points (>105% of the final requirement — 100% data milestone completed)** have been fully ingested, cleaned, and integrated into the active analytics engine:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
@@ -29,16 +29,16 @@ The platform is designed around a multi-stage data scaling architecture aiming f
 │ Data Stream                   │ Modality                      │ Record Count    │
 ├───────────────────────────────┼───────────────────────────────┼─────────────────┤
 │ WHO Disease Outbreak News     │ Clinical Outbreak Bulletins   │ 50 Bulletins    │
-│ NCBI PubMed / MEDLINE         │ Peer-Reviewed Literature      │ 2,500 Articles  │
-│ GBIF Biodiversity (India)     │ Georeferenced Coordinates     │ 3,000 Points    │
+│ NCBI PubMed / MEDLINE         │ Peer-Reviewed Literature      │ 5,000 Articles  │
+│ GBIF Biodiversity (India)     │ Georeferenced Coordinates     │ 5,500 Points    │
 ├───────────────────────────────┼───────────────────────────────┼─────────────────┤
-│ TOTAL ACTIVE DATA POINTS      │ All Integrated Modalities     │ 5,550 RECORDS   │
+│ TOTAL ACTIVE DATA POINTS      │ All Integrated Modalities     │ 10,550 RECORDS  │
 └───────────────────────────────┴───────────────────────────────┴─────────────────┘
 ```
 
 > **Essential Project Deliverables & Reports:**
-> - [DATA_STUDY.md](DATA_STUDY.md) — 5,550+ Data Points Study, Feature Dictionaries & 10k Ingestion Roadmap
-> - [MIDSEM_PROGRESS_AND_PLAN.md](MIDSEM_PROGRESS_AND_PLAN.md) — Mid-Semester Progress Review (~60%), 3-Phase Plan, 10-Week Timeline & Milestones
+> - [DATA_STUDY.md](DATA_STUDY.md) — 10,550+ Data Points Study, Feature Dictionaries & Phase 3 Roadmap
+> - [MIDSEM_PROGRESS_AND_PLAN.md](MIDSEM_PROGRESS_AND_PLAN.md) — Mid-Semester Progress Review (65%), 3-Phase Plan, 10-Week Timeline & Milestones
 > - [TA_AND_BDA_EXPLANATION.md](TA_AND_BDA_EXPLANATION.md) — Deep Academic Text Analytics & Big Data Analytics Curriculum Alignment & Viva Guide
 > - [PSEUDO.md](PSEUDO.md) — Step-by-Step Pseudocode & High-Performance Execution Walkthrough
 
@@ -560,10 +560,10 @@ python -m spacy download en_core_web_sm
 .\run_all.ps1
 ```
 This orchestrates:
-1. Scala + Apache Spark distributed preprocessing (`sbt run`) $\rightarrow$ generates `processed_documents.txt` (2,550 documents).
-2. spaCy NLP Entity Extraction (`nlp/entity_extraction.py`) $\rightarrow$ extracts entities and relationships into `nodes.csv` and `relationships.csv` (2,720 nodes, 10,946 edges).
+1. Scala + Apache Spark distributed preprocessing (`sbt run`) $\rightarrow$ generates `processed_documents.txt` (5,050 documents).
+2. spaCy NLP Entity Extraction (`nlp/entity_extraction.py`) $\rightarrow$ extracts entities and relationships into `nodes.csv` and `relationships.csv` (5,220 nodes, 21,043 edges).
 3. NetworkX Knowledge Graph Construction (`knowledge_graph/build_graph.py`) $\rightarrow$ builds graph, computes centralities, exports `important_entities.csv` and `onehealth_subgraph.png`.
-4. Analytical Modules (`analysis/run_analysis.py`) $\rightarrow$ generates temporal trends across 53 years, spatial distributions over 3,000 India coordinates, and emerging signal scores.
+4. Analytical Modules (`analysis/run_analysis.py`) $\rightarrow$ generates temporal trends across 53 years, spatial distributions over 5,500 India coordinates, and emerging signal scores.
 
 ### Step 3: Launching the Interactive Streamlit Dashboard
 ```powershell
@@ -578,24 +578,24 @@ Open your browser at `http://localhost:8501` to access the interactive OneHealth
 | Metric Dimension | Measured Empirical Value | Primary File / Artifact |
 |---|---|---|
 | **Raw WHO Outbreak Reports** | 50 records | `data/raw/who_outbreaks.csv` |
-| **Raw PubMed Scientific Articles** | 2,500 articles | `data/raw/pubmed.csv` |
-| **Raw GBIF Species Occurrences** | 3,000 records | `data/raw/gbif.csv` |
-| **Total Ingested Data Points** | **5,550 Data Points** (>55% of 10k target) | `data/processed/data_summary.csv` |
-| **Cleaned Document Corpus Size** | 2,550 unique documents | `data/processed/cleaned_documents.csv` |
-| **Spark Preprocessed Documents** | **2,550 documents** | `data/processed/spark_output/processed_documents.txt` |
-| **Knowledge Graph Nodes** | **2,720 nodes** | `knowledge_graph/nodes.csv` |
-| **Knowledge Graph Relationships** | **10,946 relationships** | `knowledge_graph/relationships.csv` |
-| **Graph Density** | $0.00148$ | `knowledge_graph/graph_summary.csv` |
-| **Document Nodes** | 2,550 nodes | `knowledge_graph/graph_summary.csv` |
+| **Raw PubMed Scientific Articles** | 5,000 articles | `data/raw/pubmed.csv` |
+| **Raw GBIF Species Occurrences** | 5,500 records | `data/raw/gbif.csv` |
+| **Total Ingested Data Points** | **10,550 Data Points** (>105% of 10,000 Goal — 100% Target Met) | `data/processed/data_summary.csv` |
+| **Cleaned Document Corpus Size** | 5,050 unique documents | `data/processed/cleaned_documents.csv` |
+| **Spark Preprocessed Documents** | **5,050 documents** | `data/processed/spark_output/processed_documents.txt` |
+| **Knowledge Graph Nodes** | **5,220 nodes** | `knowledge_graph/nodes.csv` |
+| **Knowledge Graph Relationships** | **21,043 relationships** | `knowledge_graph/relationships.csv` |
+| **Graph Density** | $0.000772$ | `knowledge_graph/graph_summary.csv` |
+| **Document Nodes** | 5,050 nodes | `knowledge_graph/graph_summary.csv` |
 | **Temporal Date Nodes** | 83 nodes | `knowledge_graph/graph_summary.csv` |
 | **Geographic Location Nodes** | 24 nodes | `knowledge_graph/graph_summary.csv` |
 | **Animal Host Nodes** | 25 nodes | `knowledge_graph/graph_summary.csv` |
 | **Disease Target Nodes** | 23 nodes | `knowledge_graph/graph_summary.csv` |
 | **Pathogen Nodes** | 15 nodes | `knowledge_graph/graph_summary.csv` |
-| **GBIF Valid Geographic Occurrences**| **3,000 coordinates (India)** | `analysis/spatial_summary.csv` |
-| **Geographic Coverage (India)** | Lat: $6.94^\circ - 33.82^\circ\text{ N}$, Lon: $68.97^\circ - 95.95^\circ\text{ E}$ | `analysis/spatial_distribution.png` |
+| **GBIF Valid Geographic Occurrences**| **5,500 coordinates (India)** | `analysis/spatial_summary.csv` |
+| **Geographic Coverage (India)** | Lat: $6.94^\circ - 33.82^\circ\text{ N}$, Lon: $68.21^\circ - 95.95^\circ\text{ E}$ | `analysis/spatial_distribution.png` |
 | **Temporal Coverage** | 53 Calendar Years (1965 – 2027) | `analysis/temporal_summary.csv` |
-| **Top Detected Emerging Signals** | Dengue (57.83), Malaria (56.08), Mpox (53.79), Avian Flu (53.16) | `analysis/emerging_signals.csv` |
+| **Top Detected Emerging Signals** | Malaria (56.08), Coronavirus (50.71), Dengue (50.33), Ebola (50.10) | `analysis/emerging_signals.csv` |
 
 ---
 

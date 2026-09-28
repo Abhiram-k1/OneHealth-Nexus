@@ -20,24 +20,24 @@
 
 ### What is our solution?
 We engineered **OneHealth Nexus** — an end-to-end Big Data and Text Analytics pipeline that:
-1. Automatically collects data from **WHO**, **PubMed**, and **GBIF**, scaling to **5,550 verified data points** (>55% of our 10,000-point project milestone).
+1. Automatically collects data from **WHO**, **PubMed**, and **GBIF**, scaling to **10,550 verified data points** (100% of our 10,000-point project requirement completed ahead of schedule).
 2. Cleans and deduplicates the massive text corpus using **Apache Spark 4.0.1** and **Scala 2.13.16** to demonstrate industrial big data scalability.
 3. Uses Natural Language Processing (**spaCy**) to read medical texts like a specialist, automatically identifying diseases, viruses, animal hosts, locations, and dates.
-4. Constructs an interconnected **Temporal Knowledge Graph** using **NetworkX** containing **2,720 nodes** and **10,946 semantic relationships**.
-5. Performs **Temporal Analysis** (tracking longitudinal trends across 53 years) and **Spatial Analysis** (mapping 3,000 animal occurrences across India).
+4. Constructs an interconnected **Temporal Knowledge Graph** using **NetworkX** containing **5,220 nodes** and **21,043 semantic relationships**.
+5. Performs **Temporal Analysis** (tracking longitudinal trends across 53 years) and **Spatial Analysis** (mapping 5,500 animal occurrences across India).
 6. Calculates a transparent, multi-factor **Emerging Signal Indicator** that ranks which diseases are showing abnormal recent surges across diverse sources.
-7. Presents all intelligence inside an interactive, publication-grade **Streamlit Dashboard** featuring 7 synchronized modules.
+7. Presents all intelligence inside an interactive, publication-grade **Streamlit Dashboard** featuring 7 synchronized modules, with overall progress standing at **65%**.
 
 ### Key Numbers at a Glance (Memorize for Viva!)
-- **Total Ingested Data Points:** Exactly **5,550 verified records** (>55% achieved toward 10k target!).
+- **Total Ingested Data Points:** Exactly **10,550 verified records** (100% of 10,000 Milestone Met, >105% of Target!).
   - **WHO Outbreak Bulletins:** 50 international outbreak records.
-  - **PubMed Biomedical Articles:** 2,500 peer-reviewed scientific articles.
-  - **GBIF Animal Occurrences:** 3,000 verified georeferenced animal coordinates in India.
-- **Spark Preprocessed Corpus:** Exactly **2,550 unique, deduplicated documents**.
-- **Knowledge Graph Scale:** Exactly **2,720 nodes** and **10,946 directed relationships**.
-- **Graph Breakdown:** 2,550 Documents, 83 Dates, 25 Animals, 24 Locations, 23 Diseases, 15 Pathogens.
-- **Temporal Horizon:** **53 Calendar Years** (1965 to 2027), with intense volume in 2024 (641 docs), 2025 (518 docs), and 2026 (744 docs).
-- **Geographic Bounds (India):** Latitude $6.94^\circ\text{ N}$ to $33.82^\circ\text{ N}$, Longitude $68.97^\circ\text{ E}$ to $95.95^\circ\text{ E}$ (3,000 coordinates).
+  - **PubMed Biomedical Articles:** 5,000 peer-reviewed scientific articles.
+  - **GBIF Animal Occurrences:** 5,500 verified georeferenced animal coordinates in India.
+- **Spark Preprocessed Corpus:** Exactly **5,050 unique, deduplicated documents**.
+- **Knowledge Graph Scale:** Exactly **5,220 nodes** and **21,043 directed relationships**.
+- **Graph Breakdown:** 5,050 Documents, 83 Dates, 25 Animals, 24 Locations, 23 Diseases, 15 Pathogens.
+- **Temporal Horizon:** **53 Calendar Years** (1965 to 2027), with intense volume in 2024 (784 docs), 2025 (518 docs), and 2026 (744 docs).
+- **Geographic Bounds (India):** Latitude $6.94^\circ\text{ N}$ to $33.82^\circ\text{ N}$, Longitude $68.21^\circ\text{ E}$ to $95.95^\circ\text{ E}$ (5,500 coordinates).
 - **Top Detected Signals:** **Dengue** (Score: 57.83), **Malaria** (Score: 56.08), **Mpox / Monkeypox** (Score: 53.79), **Avian Influenza / Influenza** (Score: 53.16), **Ebola** (Score: 50.10).
 
 ---

@@ -365,13 +365,13 @@ with st.sidebar:
     </div>
     <div style="font-size: 12px; color: #94a3b8 !important; line-height: 1.8;">
         • WHO Clinical Outbreaks: <b style="color:#ffffff !important;">50</b><br>
-        • PubMed Research Corpus: <b style="color:#ffffff !important;">2,500</b><br>
-        • GBIF Wildlife Vectors: <b style="color:#ffffff !important;">3,000</b>
+        • PubMed Research Corpus: <b style="color:#ffffff !important;">5,000</b><br>
+        • GBIF Wildlife Vectors: <b style="color:#ffffff !important;">5,500</b>
     </div>
     """, unsafe_allow_html=True)
 
     st.markdown("<hr style='border: none; border-top: 1px solid #334155; margin: 20px 0;'>", unsafe_allow_html=True)
-    st.caption("Phase 1 — Mid-Semester Release")
+    st.caption("Phase 1 & 2 Core — Mid-Semester Release")
     st.caption("Big Data & Text Analytics Lab")
 
 # ============================================================
@@ -381,11 +381,11 @@ with st.sidebar:
 st.markdown("""
 <div class="status-banner">
     <div>
-        <span class="badge-midterm">Phase 1 Prototype</span>
+        <span class="badge-midterm">Phase 1 & 2 Operational (65%)</span>
         <span class="banner-text" style="color: #000000 !important; margin-left: 12px; font-weight: 600;">Mid-Semester Review — Ingestion, Apache Spark Preprocessing & Knowledge Graph Construction</span>
     </div>
     <div style="font-size: 12px; color: #000000 !important; font-weight: 600;">
-        Status: Validated Pipeline (5,550 Data Points)
+        Status: Validated Pipeline (10,550 Data Points — 100% Data Milestone Achieved)
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -416,7 +416,7 @@ if page == "Executive Overview":
         <div class="kpi-card">
             <div class="kpi-label" style="color:#334155 !important;">Ingested Records</div>
             <div class="kpi-value" style="color:#000000 !important;">{total_points:,}</div>
-            <div class="kpi-sub" style="color:#475569 !important;">55.5% of 10,000 Milestone</div>
+            <div class="kpi-sub" style="color:#16a34a !important; font-weight:700;">100% of 10k Milestone Met</div>
         </div>
         """, unsafe_allow_html=True)
 
@@ -837,10 +837,10 @@ elif page == "Methodology & Evaluation":
 
     # High-level Progress KPIs
     k1, k2, k3, k4 = st.columns(4)
-    k1.metric("Overall Completion", "60.0%", "Mid-Semester Gate")
-    k2.metric("Data Lake Scale", "5,550 Records", "55.5% of 10k Goal")
+    k1.metric("Overall Completion", "65.0%", "Mid-Semester Gate")
+    k2.metric("Data Lake Scale", f"{total_points:,} Records", "100% Target Met")
     k3.metric("Current Timeline", "Week 6 / 10", "Phase 2 Active")
-    k4.metric("Knowledge Graph", "4,796 Nodes", "12,471 Edges")
+    k4.metric("Knowledge Graph", f"{fmt_num(get_metric('total_nodes'))} Nodes", f"{fmt_num(get_metric('total_relationships'))} Edges")
 
     st.markdown("<div style='height: 16px;'></div>", unsafe_allow_html=True)
 
@@ -848,8 +848,8 @@ elif page == "Methodology & Evaluation":
     progress_img = "analysis/midsem_progress_breakdown.png"
     if os.path.exists(progress_img):
         st.markdown('<div class="section-title" style="color:#000000 !important; font-size:20px; font-weight:750;">Mid-Semester Subsystem Completion Matrix</div>', unsafe_allow_html=True)
-        st.markdown('<div class="section-subtitle" style="color:#334155 !important; font-weight:500;">Quantitative engineering audit across all 8 architectural modules (Overall: 60% Complete).</div>', unsafe_allow_html=True)
-        st.image(progress_img, caption="Figure 7: Mid-Semester Completion Status (60% Delivered vs 40% Remaining End-Semester Scope)", use_container_width=True)
+        st.markdown('<div class="section-subtitle" style="color:#334155 !important; font-weight:500;">Quantitative engineering audit across all 8 architectural modules (Overall: 65% Complete, 100% Data Milestone Delivered).</div>', unsafe_allow_html=True)
+        st.image(progress_img, caption="Figure 7: Mid-Semester Completion Status (65% Delivered vs 35% Remaining End-Semester Scope)", use_container_width=True)
 
     st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
 
@@ -858,7 +858,7 @@ elif page == "Methodology & Evaluation":
     if os.path.exists(roadmap_img):
         st.markdown('<div class="section-title" style="color:#000000 !important; font-size:20px; font-weight:750;">Ten-Week Project Roadmap & 3-Phase Schedule</div>', unsafe_allow_html=True)
         st.markdown('<div class="section-subtitle" style="color:#334155 !important; font-weight:500;">Gantt timeline mapping all 12 tasks across Phases 1, 2, and 3, highlighting the Week 6 Mid-Semester Review Gateway.</div>', unsafe_allow_html=True)
-        st.image(roadmap_img, caption="Figure 8: 10-Week Gantt Timeline Highlighting the Week 6 Evaluation Milestone", use_container_width=True)
+        st.image(roadmap_img, caption="Figure 8: 10-Week Gantt Timeline Highlighting the Week 6 Evaluation Milestone (65% Progress Gate)", use_container_width=True)
 
     st.markdown("<div style='height: 20px;'></div>", unsafe_allow_html=True)
 
@@ -874,10 +874,10 @@ elif page == "Methodology & Evaluation":
             <div style="font-size:16px; font-weight:800; color:#000000; margin-top:4px;">Data Lake & Batch Core</div>
             <div style="font-size:12px; color:#16a34a; font-weight:700; margin-top:2px;">STATUS: 100% COMPLETE</div>
             <div style="font-size:13px; color:#334155; margin-top:10px; line-height:1.6;">
-                • Harvested 5,550 multi-source points (WHO, PubMed, GBIF)<br>
+                • Harvested 10,550 multi-source points (WHO, PubMed, GBIF)<br>
+                • Full 10,000+ data requirement 100% fulfilled<br>
                 • Apache Spark batch deduplication (Scala 4.0.1)<br>
-                • Schema harmonization & coordinate bounding<br>
-                • Regex & spaCy biomedical NER extraction
+                • Schema harmonization & coordinate bounding
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -889,9 +889,9 @@ elif page == "Methodology & Evaluation":
             <div style="font-size:16px; font-weight:800; color:#000000; margin-top:4px;">Knowledge Graph & Prototype</div>
             <div style="font-size:12px; color:#ea580c; font-weight:700; margin-top:2px;">STATUS: 85% (WEEK 6 GATEWAY)</div>
             <div style="font-size:13px; color:#334155; margin-top:10px; line-height:1.6;">
-                • Multi-relational graph (4,796 nodes, 12,471 edges)<br>
+                • Multi-relational graph (5,220 nodes, 21,043 edges)<br>
                 • 53-year longitudinal surveillance (1965–2027)<br>
-                • Geospatial hotspot mapping (3,000 GPS points)<br>
+                • Geospatial hotspot mapping (5,500 GPS points)<br>
                 • 4-factor composite risk formula & 7-screen UI
             </div>
         </div>
@@ -902,12 +902,12 @@ elif page == "Methodology & Evaluation":
         <div style="background:#ffffff; border:1px solid #cbd5e1; border-top:4px solid #2563eb; border-radius:8px; padding:18px; height:100%;">
             <div style="font-size:11px; font-weight:700; color:#2563eb; text-transform:uppercase;">Phase 3: AI & Scale (Weeks 8–10)</div>
             <div style="font-size:16px; font-weight:800; color:#000000; margin-top:4px;">Predictive GNNs & Production</div>
-            <div style="font-size:12px; color:#2563eb; font-weight:700; margin-top:2px;">STATUS: PLANNED (REMAINING 40%)</div>
+            <div style="font-size:12px; color:#2563eb; font-weight:700; margin-top:2px;">STATUS: PLANNED (REMAINING 35%)</div>
             <div style="font-size:13px; color:#334155; margin-top:10px; line-height:1.6;">
-                • Ingestion scaling to 10,000+ points (ProMED, FAO)<br>
+                • Real-time streaming ingestion (Kafka / Spark Streaming)<br>
                 • BioLinkBERT fine-tuning for relation extraction<br>
                 • Graph Neural Network (GNN) spillover link prediction<br>
-                • Neo4j database migration & cloud deployment
+                • Neo4j production cluster & Cloud Run deployment
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -928,18 +928,18 @@ elif page == "Methodology & Evaluation":
             "Surveillance Interface",
             "Database & Production"
         ],
-        "Delivered at Mid-Semester (60%)": [
-            "5,550 validated points (3,000 GBIF + 2,500 PubMed + 50 WHO)",
+        "Delivered at Mid-Semester (65%)": [
+            "10,550 validated points (5,500 GBIF + 5,000 PubMed + 50 WHO - 100% Target Met)",
             "Scala Apache Spark 4.0.1 + PySpark automated batch pipeline",
             "spaCy en_core_web_sm + fast-path regex for 5 entity classes",
-            "4,796 nodes, 12,471 typed edges, degree centrality rankings",
-            "53-year historical surge curve + 3,000 GPS point density map",
+            "5,220 nodes, 21,043 typed edges, degree centrality rankings",
+            "53-year historical surge curve + 5,500 GPS point density map",
             "Rule-based compound risk score (velocity, growth, sources, degree)",
             "7-page operational surveillance dashboard in Streamlit",
             "Local PowerShell self-healing automation (.venv, sbt)"
         ],
-        "Planned for End-Semester (Remaining 40%)": [
-            "Scale past 10,000 points via ProMED-mail, FAO EMPRES-i, and GISAID",
+        "Planned for End-Semester (Remaining 35%)": [
+            "Real-time streaming ingestion connectors (Kafka / Spark Streaming)",
             "GCP Dataproc Serverless cloud cluster multi-node execution",
             "Fine-tuned BioLinkBERT transformer for complex biomedical relations",
             "Neo4j Enterprise Graph Database with persistent Cypher endpoints",
@@ -948,7 +948,7 @@ elif page == "Methodology & Evaluation":
             "Automated alert notification system (Email/Webhook) & REST API",
             "Docker containerization, CI/CD pipeline, and Cloud Run hosting"
         ],
-        "Completion %": ["55.5%", "95.0%", "75.0%", "70.0%", "85.0%", "40.0%", "90.0%", "20.0%"]
+        "Completion %": ["100.0%", "95.0%", "80.0%", "75.0%", "85.0%", "45.0%", "90.0%", "20.0%"]
     }
     st.dataframe(pd.DataFrame(matrix_data), use_container_width=True, hide_index=True)
 

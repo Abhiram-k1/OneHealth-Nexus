@@ -8,8 +8,8 @@ import re
 nlp = None
 try:
     import spacy
-    nlp = spacy.load("en_core_web_sm")
-    print("Loaded spaCy model: en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm", disable=["tagger", "parser", "attribute_ruler", "lemmatizer"])
+    print("Loaded spaCy model: en_core_web_sm (optimized for high-throughput NER)")
 except Exception:
     print("spaCy model not loaded; operating in high-performance biomedical regex extraction mode.")
 

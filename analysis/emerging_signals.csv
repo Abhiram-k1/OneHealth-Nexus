@@ -1,18 +1,18 @@
 disease,total_mentions,recent_mentions,source_count,year_count,signal_score
-dengue,309,172,1,5,57.83
 malaria,13,6,2,6,56.08
-mpox,311,148,1,3,53.79
-monkeypox,312,146,1,8,53.4
-avian influenza,228,60,2,19,53.16
-influenza,238,62,2,19,53.03
 coronavirus,28,6,2,9,50.71
+dengue,423,172,1,37,50.33
 ebola,312,63,2,8,50.1
-nipah,26,8,1,8,45.38
+influenza,367,62,2,41,48.45
+avian influenza,357,60,2,41,48.4
+mpox,441,148,1,37,46.78
+monkeypox,442,146,1,38,46.52
 covid,52,4,2,7,43.85
 covid-19,52,4,2,7,43.85
 hepatitis,12,4,1,4,38.67
 tuberculosis,15,4,1,5,38.33
-rabies,290,11,1,43,31.9
+nipah,151,8,1,37,32.65
+rabies,418,11,1,47,31.32
 typhoid,6,0,2,1,26.0
 cholera,5,0,2,2,25.0
 measles,2,0,2,2,22.0

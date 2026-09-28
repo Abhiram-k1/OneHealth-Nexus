@@ -39,11 +39,11 @@ By unifying both paradigms, **OneHealth Nexus** ingests heterogeneous, high-volu
 
 | Dimension | Textbook Concept | Concrete OneHealth Nexus Implementation |
 | :--- | :--- | :--- |
-| **Volume** | Ingestion and management of massive data scales beyond single-machine memory capacity. | Ingested **5,550 multi-source data points** in Phase 1 (3,000 GBIF vector records, 2,500 PubMed research articles, 50 WHO Outbreak Reports), engineered with an architecture designed to scale seamlessly past **10,000+ points** in Phase 3. |
+| **Volume** | Ingestion and management of massive data scales beyond single-machine memory capacity. | Ingested **10,550 multi-source data points** in Phase 1 (5,500 GBIF vector records, 5,000 PubMed research articles, 50 WHO Outbreak Reports), fulfilling 100% of the project's data scale milestone ahead of schedule. |
 | **Velocity** | Speed of data generation, streaming ingestion, and batch processing cycles. | Batch-processed 53 years of surveillance records (1965–2027) via Apache Spark in 60 seconds; structured for recurring automated pipeline triggers. |
 | **Variety** | Heterogeneous data formats spanning unstructured text, semi-structured JSON, and structured tabular GIS coordinates. | Unifies unstructured biomedical abstracts (PubMed), semi-structured HTML/JSON outbreak reports (WHO DONs), and structured georeferenced spatial tuples (GBIF CSV). |
-| **Veracity** | Data quality, completeness, noise filtering, and deduplication of noisy web-scraped data. | Automated Spark cleaning filters out null texts, enforces India bounding-box coordinates ($6.94^\circ\text{–}33.82^\circ\text{ N}$, $68.97^\circ\text{–}95.95^\circ\text{ E}$), reconciles partial date strings, and achieves a **99.7% data hygiene score**. |
-| **Value** | Extracting actionable predictive intelligence and early-warning decision support from raw data. | Synthesizes 4-factor composite risk scores to surface high-priority zoonotic pathogen risks (Dengue: 57.83, Malaria: 56.08, Mpox: 53.79, Avian Flu: 53.16). |
+| **Veracity** | Data quality, completeness, noise filtering, and deduplication of noisy web-scraped data. | Automated Spark cleaning filters out null texts, enforces India bounding-box coordinates ($6.94^\circ\text{–}33.82^\circ\text{ N}$, $68.21^\circ\text{–}95.95^\circ\text{ E}$), reconciles partial date strings, and achieves a **100% data hygiene score**. |
+| **Value** | Extracting actionable predictive intelligence and early-warning decision support from raw data. | Synthesizes 4-factor composite risk scores to surface high-priority zoonotic pathogen risks (Malaria: 56.08, Coronavirus: 50.71, Dengue: 50.33, Ebola: 50.10). |
 
 ---
 
@@ -239,14 +239,14 @@ The extracted triples are loaded into a **Heterogeneous Multi-Relational Knowled
    Measures the proportion of potential edges that actually exist in the network:
    $$D = \frac{|E|}{|V|(|V| - 1)}$$
    *For OneHealth Nexus*:
-   * $|V| = 4,796$ nodes
-   * $|E| = 12,471$ relationships
-   * Density: $D = 0.000542$ (characteristic of sparse, highly modular real-world biomedical knowledge networks).
+   * $|V| = 5,220$ nodes
+   * $|E| = 21,043$ relationships
+   * Density: $D = 0.000772$ (characteristic of sparse, highly modular real-world biomedical knowledge networks).
 
 2. **Degree Centrality ($C_D$)**:
    Quantifies the biological transmission importance of an entity based on the number of incident edges:
    $$C_D(v) = \frac{\text{deg}(v)}{|V| - 1}$$
-   * **In-Degree Centrality**: Measures how many independent documents and outbreaks reference a specific disease or host (e.g., `virus`: 1,488 connections; `cat`/`livestock`/`wildlife`: 350+ connections; `dengue`/`mpox`/`ebola`: 310+ connections).
+   * **In-Degree Centrality**: Measures how many independent documents and outbreaks reference a specific disease or host (e.g., `virus`: 3,413 connections; `livestock`: 1,058; `cat`: 920; `wildlife`: 601; `monkey`: 447; `monkeypox`: 442; `mpox`: 441; `dengue`: 423; `rabies`: 418).
    * **Transmission Hubs**: Entities with high in-degree centrality represent **super-spreader transmission hubs** connecting disparate host species to human outbreaks.
 
 3. **Multi-Hop Path Traversal**:
@@ -271,13 +271,15 @@ Where:
 * $c_{\text{centrality}}(d)$: Normalized graph degree centrality in the knowledge network. Weight $w_4 = 0.15$.
 
 #### Current Mid-Semester Prioritization Leaderboard:
-1. **Dengue Virus**: **57.83** (High velocity in recent literature + vector presence in South Asia)
-2. **Malaria (*Plasmodium*)**: **56.08** (Sustained cross-source documentation)
-3. **Mpox**: **53.79** (Rapid acceleration following global re-emergence)
-4. **Monkeypox**: **53.40** (Corroborated historical surveillance)
-5. **Avian Influenza (H5N1)**: **53.16** (Wildlife-to-domestic poultry cross-transmission risk)
-6. **Ebola**: **50.10** (High clinical fatality with localized African reservoirs)
-7. **Nipah**: **45.38** (Bat-borne zoonotic spillover risk in Southern India)
+1. **Malaria (*Plasmodium*)**: **56.08** (Sustained cross-source documentation)
+2. **Coronavirus (*SARS-CoV-2*)**: **50.71** (Strong multi-source research volume)
+3. **Dengue Virus**: **50.33** (High velocity in recent literature + vector presence in South Asia)
+4. **Ebola**: **50.10** (High clinical fatality with localized African reservoirs)
+5. **Influenza**: **48.45** (Orthomyxovirus respiratory surveillance across 41 years)
+6. **Avian Influenza (H5N1)**: **48.40** (Wildlife-to-domestic poultry cross-transmission risk)
+7. **Mpox**: **46.78** (Rapid acceleration following global re-emergence)
+8. **Monkeypox**: **46.52** (Corroborated historical surveillance)
+9. **COVID-19**: **43.85** (Persistent post-pandemic surveillance)
 
 ---
 

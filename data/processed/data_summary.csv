@@ -1,0 +1,5 @@
+dataset,records,file
+WHO Disease Outbreak News,50,data/raw/who_outbreaks.csv
+PubMed,500,data/raw/pubmed.csv
+GBIF,300,data/raw/gbif.csv
+Combined Documents,550,data/processed/cleaned_documents.csv

@@ -21,7 +21,7 @@ st.set_page_config(
 )
 
 # ============================================================
-# INSTITUTIONAL STYLING & CSS
+# INSTITUTIONAL STYLING & HIGH-CONTRAST CSS
 # ============================================================
 
 st.markdown("""
@@ -31,31 +31,53 @@ st.markdown("""
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
-    /* Main background */
-    .stApp {
-        background-color: #f8fafc;
+    /* Force light background on main canvas */
+    .stApp,
+    [data-testid="stAppViewContainer"],
+    [data-testid="stHeader"],
+    .main,
+    .block-container {
+        background-color: #f8fafc !important;
+        color: #000000 !important;
     }
 
-    /* Sidebar */
-    section[data-testid="stSidebar"] {
-        background-color: #0f172a;
-    }
-
-    section[data-testid="stSidebar"] * {
-        color: #e2e8f0;
-    }
-
-    section[data-testid="stSidebar"] .stRadio label {
-        color: #cbd5e1 !important;
-        font-size: 14px;
-        padding: 4px 0;
+    /* Force all headings and text elements on the main canvas to solid black */
+    [data-testid="stAppViewContainer"] h1,
+    [data-testid="stAppViewContainer"] h2,
+    [data-testid="stAppViewContainer"] h3,
+    [data-testid="stAppViewContainer"] h4,
+    [data-testid="stAppViewContainer"] h5,
+    [data-testid="stAppViewContainer"] h6,
+    [data-testid="stAppViewContainer"] p,
+    [data-testid="stAppViewContainer"] span,
+    [data-testid="stAppViewContainer"] label,
+    [data-testid="stAppViewContainer"] div,
+    [data-testid="stAppViewContainer"] strong,
+    .stMarkdown,
+    .stMarkdown p,
+    .stMarkdown h1,
+    .stMarkdown h2,
+    .stMarkdown h3,
+    .header-title,
+    .header-subtitle,
+    .section-title,
+    .section-subtitle,
+    .kpi-label,
+    .kpi-value,
+    .kpi-sub,
+    .signal-title,
+    .signal-meta,
+    .stage-title,
+    .stage-desc,
+    .banner-text {
+        color: #000000 !important;
     }
 
     /* Top banner */
     .status-banner {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-left: 4px solid #2563eb;
+        background: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
+        border-left: 4px solid #2563eb !important;
         border-radius: 8px;
         padding: 12px 18px;
         margin-bottom: 20px;
@@ -66,8 +88,8 @@ st.markdown("""
     }
 
     .badge-midterm {
-        background: #dbeafe;
-        color: #1e40af;
+        background: #dbeafe !important;
+        color: #1e40af !important;
         font-size: 11px;
         font-weight: 700;
         padding: 4px 10px;
@@ -77,149 +99,190 @@ st.markdown("""
     }
 
     .banner-text {
-        font-size: 13px;
-        color: #475569;
-        font-weight: 500;
+        font-size: 13px !important;
+        color: #0f172a !important;
+        font-weight: 600 !important;
     }
 
     /* Header component */
     .header-box {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
+        background: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
         border-radius: 10px;
         padding: 24px;
         margin-bottom: 24px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        box-shadow: 0 1px 4px rgba(0,0,0,0.05);
     }
 
     .header-title {
-        font-size: 26px;
-        font-weight: 700;
-        color: #0f172a;
-        margin: 0;
+        font-size: 28px !important;
+        font-weight: 800 !important;
+        color: #000000 !important;
+        margin: 0 !important;
+        line-height: 1.2 !important;
     }
 
     .header-subtitle {
-        font-size: 14px;
-        color: #64748b;
-        margin-top: 6px;
-        line-height: 1.5;
+        font-size: 14px !important;
+        color: #1e293b !important;
+        margin-top: 8px !important;
+        line-height: 1.5 !important;
+        font-weight: 500 !important;
     }
 
     /* Section titles */
     .section-title {
-        font-size: 18px;
-        font-weight: 700;
-        color: #0f172a;
-        margin-top: 10px;
-        margin-bottom: 6px;
-        letter-spacing: -0.2px;
+        font-size: 20px !important;
+        font-weight: 750 !important;
+        color: #000000 !important;
+        margin-top: 14px !important;
+        margin-bottom: 6px !important;
     }
 
     .section-subtitle {
-        font-size: 13px;
-        color: #64748b;
-        margin-bottom: 16px;
+        font-size: 13px !important;
+        color: #334155 !important;
+        margin-bottom: 16px !important;
+        font-weight: 500 !important;
     }
 
     /* KPI Cards */
     .kpi-card {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
+        background: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
         border-radius: 8px;
         padding: 18px 20px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.04);
         height: 100%;
     }
 
     .kpi-label {
-        font-size: 12px;
-        font-weight: 600;
-        color: #64748b;
+        font-size: 12px !important;
+        font-weight: 700 !important;
+        color: #334155 !important;
         text-transform: uppercase;
         letter-spacing: 0.5px;
     }
 
     .kpi-value {
-        font-size: 28px;
-        font-weight: 700;
-        color: #0f172a;
-        margin-top: 6px;
-        margin-bottom: 4px;
+        font-size: 30px !important;
+        font-weight: 800 !important;
+        color: #000000 !important;
+        margin-top: 6px !important;
+        margin-bottom: 4px !important;
     }
 
     .kpi-sub {
-        font-size: 12px;
-        color: #94a3b8;
+        font-size: 12px !important;
+        color: #475569 !important;
+        font-weight: 500 !important;
     }
 
     /* Signal Card */
     .signal-item {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-left: 4px solid #ef4444;
+        background: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
+        border-left: 4px solid #dc2626 !important;
         border-radius: 6px;
         padding: 14px 18px;
         margin-bottom: 10px;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
 
     .signal-title {
-        font-size: 15px;
-        font-weight: 700;
-        color: #0f172a;
+        font-size: 15px !important;
+        font-weight: 750 !important;
+        color: #000000 !important;
     }
 
     .signal-meta {
-        font-size: 12px;
-        color: #64748b;
-        margin-top: 4px;
+        font-size: 12px !important;
+        color: #1e293b !important;
+        margin-top: 4px !important;
+        line-height: 1.6 !important;
     }
 
     .signal-score-badge {
-        font-size: 22px;
-        font-weight: 700;
-        color: #dc2626;
+        font-size: 22px !important;
+        font-weight: 800 !important;
+        color: #dc2626 !important;
     }
 
     /* Pipeline stage box */
     .stage-card {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
+        background: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
         border-radius: 8px;
         padding: 16px 20px;
         margin-bottom: 12px;
     }
 
     .stage-num {
-        font-size: 11px;
-        font-weight: 700;
-        color: #2563eb;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        color: #2563eb !important;
         text-transform: uppercase;
         letter-spacing: 0.5px;
     }
 
     .stage-title {
-        font-size: 15px;
-        font-weight: 700;
-        color: #0f172a;
-        margin-top: 2px;
+        font-size: 16px !important;
+        font-weight: 750 !important;
+        color: #000000 !important;
+        margin-top: 3px !important;
     }
 
     .stage-desc {
-        font-size: 13px;
-        color: #64748b;
-        margin-top: 4px;
+        font-size: 13px !important;
+        color: #334155 !important;
+        margin-top: 4px !important;
+    }
+
+    /* Metric widgets text */
+    [data-testid="stMetricValue"],
+    [data-testid="stMetricLabel"] {
+        color: #000000 !important;
+    }
+
+    /* Streamlit controls */
+    .stSelectbox label, .stSlider label, .stTextInput label {
+        color: #000000 !important;
+        font-weight: 600 !important;
     }
 
     /* Footer */
     .dash-footer {
-        border-top: 1px solid #e2e8f0;
+        border-top: 1px solid #cbd5e1;
         padding: 24px 0 12px 0;
         margin-top: 40px;
-        color: #94a3b8;
+        color: #64748b;
         font-size: 12px;
         text-align: center;
+    }
+
+    /* ISOLATE SIDEBAR: Keep dark slate with bright white/silver text */
+    section[data-testid="stSidebar"],
+    section[data-testid="stSidebar"] > div {
+        background-color: #0f172a !important;
+    }
+
+    section[data-testid="stSidebar"] *,
+    section[data-testid="stSidebar"] p,
+    section[data-testid="stSidebar"] span,
+    section[data-testid="stSidebar"] label,
+    section[data-testid="stSidebar"] div,
+    section[data-testid="stSidebar"] h1,
+    section[data-testid="stSidebar"] h2,
+    section[data-testid="stSidebar"] h3,
+    section[data-testid="stSidebar"] caption {
+        color: #ffffff !important;
+    }
+
+    section[data-testid="stSidebar"] .stRadio label,
+    section[data-testid="stSidebar"] .stRadio label span,
+    section[data-testid="stSidebar"] .stRadio label p {
+        color: #e2e8f0 !important;
+        font-size: 14px !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -266,8 +329,8 @@ def fmt_num(val):
 with st.sidebar:
     st.markdown("""
     <div style="padding: 10px 0 16px 0;">
-        <div style="font-size: 19px; font-weight: 700; color: #ffffff; letter-spacing: 0.5px;">ONEHEALTH NEXUS</div>
-        <div style="font-size: 11px; color: #94a3b8; text-transform: uppercase; margin-top: 3px;">Surveillance Platform</div>
+        <div style="font-size: 19px; font-weight: 700; color: #ffffff !important; letter-spacing: 0.5px;">ONEHEALTH NEXUS</div>
+        <div style="font-size: 11px; color: #94a3b8 !important; text-transform: uppercase; margin-top: 3px;">Surveillance Platform</div>
     </div>
     """, unsafe_allow_html=True)
 
@@ -287,7 +350,7 @@ with st.sidebar:
     st.markdown("<hr style='border: none; border-top: 1px solid #334155; margin: 20px 0;'>", unsafe_allow_html=True)
 
     st.markdown("""
-    <div style="font-size: 11px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
+    <div style="font-size: 11px; font-weight: 700; color: #94a3b8 !important; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
         Data Ingestion Status
     </div>
     """, unsafe_allow_html=True)
@@ -297,13 +360,13 @@ with st.sidebar:
     st.progress(progress_pct)
 
     st.markdown(f"""
-    <div style="font-size: 12px; color: #cbd5e1; margin-bottom: 14px;">
-        <b>{total_points:,}</b> / 10,000 Records ({progress_pct*100:.1f}%)
+    <div style="font-size: 12px; color: #cbd5e1 !important; margin-bottom: 14px;">
+        <b style="color:#ffffff !important;">{total_points:,}</b> / 10,000 Records ({progress_pct*100:.1f}%)
     </div>
-    <div style="font-size: 12px; color: #94a3b8; line-height: 1.8;">
-        • WHO Clinical Outbreaks: <b>50</b><br>
-        • PubMed Research Corpus: <b>2,500</b><br>
-        • GBIF Wildlife Vectors: <b>3,000</b>
+    <div style="font-size: 12px; color: #94a3b8 !important; line-height: 1.8;">
+        • WHO Clinical Outbreaks: <b style="color:#ffffff !important;">50</b><br>
+        • PubMed Research Corpus: <b style="color:#ffffff !important;">2,500</b><br>
+        • GBIF Wildlife Vectors: <b style="color:#ffffff !important;">3,000</b>
     </div>
     """, unsafe_allow_html=True)
 
@@ -319,9 +382,9 @@ st.markdown("""
 <div class="status-banner">
     <div>
         <span class="badge-midterm">Phase 1 Prototype</span>
-        <span class="banner-text" style="margin-left: 12px;">Mid-Semester Review — Ingestion, Apache Spark Preprocessing & Knowledge Graph Construction</span>
+        <span class="banner-text" style="color: #000000 !important; margin-left: 12px; font-weight: 600;">Mid-Semester Review — Ingestion, Apache Spark Preprocessing & Knowledge Graph Construction</span>
     </div>
-    <div style="font-size: 12px; color: #64748b; font-weight: 500;">
+    <div style="font-size: 12px; color: #000000 !important; font-weight: 600;">
         Status: Validated Pipeline (5,550 Data Points)
     </div>
 </div>
@@ -335,8 +398,10 @@ if page == "Executive Overview":
 
     st.markdown("""
     <div class="header-box">
-        <h1 class="header-title">Executive Surveillance Overview</h1>
-        <div class="header-subtitle">
+        <div class="header-title" style="color: #000000 !important; font-size: 28px; font-weight: 800; line-height: 1.2;">
+            Executive Surveillance Overview
+        </div>
+        <div class="header-subtitle" style="color: #1e293b !important; font-size: 14px; margin-top: 8px; line-height: 1.5; font-weight: 500;">
             Cross-domain early warning surveillance platform integrating clinical human disease alerts, 
             biomedical peer-reviewed literature, and animal vector reservoir occurrences.
         </div>
@@ -349,45 +414,45 @@ if page == "Executive Overview":
     with m1:
         st.markdown(f"""
         <div class="kpi-card">
-            <div class="kpi-label">Ingested Records</div>
-            <div class="kpi-value">{total_points:,}</div>
-            <div class="kpi-sub">55.5% of 10,000 Milestone</div>
+            <div class="kpi-label" style="color:#334155 !important;">Ingested Records</div>
+            <div class="kpi-value" style="color:#000000 !important;">{total_points:,}</div>
+            <div class="kpi-sub" style="color:#475569 !important;">55.5% of 10,000 Milestone</div>
         </div>
         """, unsafe_allow_html=True)
 
     with m2:
         st.markdown(f"""
         <div class="kpi-card">
-            <div class="kpi-label">Cleaned Documents</div>
-            <div class="kpi-value">{fmt_num(len(docs))}</div>
-            <div class="kpi-sub">Spark deduplicated texts</div>
+            <div class="kpi-label" style="color:#334155 !important;">Cleaned Documents</div>
+            <div class="kpi-value" style="color:#000000 !important;">{fmt_num(len(docs))}</div>
+            <div class="kpi-sub" style="color:#475569 !important;">Spark deduplicated texts</div>
         </div>
         """, unsafe_allow_html=True)
 
     with m3:
         st.markdown(f"""
         <div class="kpi-card">
-            <div class="kpi-label">Vector GPS Points</div>
-            <div class="kpi-value">{fmt_num(len(gbif))}</div>
-            <div class="kpi-sub">Bounded to India region</div>
+            <div class="kpi-label" style="color:#334155 !important;">Vector GPS Points</div>
+            <div class="kpi-value" style="color:#000000 !important;">{fmt_num(len(gbif))}</div>
+            <div class="kpi-sub" style="color:#475569 !important;">Bounded to India region</div>
         </div>
         """, unsafe_allow_html=True)
 
     with m4:
         st.markdown(f"""
         <div class="kpi-card">
-            <div class="kpi-label">Knowledge Nodes</div>
-            <div class="kpi-value">{fmt_num(get_metric("Total Nodes"))}</div>
-            <div class="kpi-sub">6 entity classifications</div>
+            <div class="kpi-label" style="color:#334155 !important;">Knowledge Nodes</div>
+            <div class="kpi-value" style="color:#000000 !important;">{fmt_num(get_metric("Total Nodes"))}</div>
+            <div class="kpi-sub" style="color:#475569 !important;">6 entity classifications</div>
         </div>
         """, unsafe_allow_html=True)
 
     with m5:
         st.markdown(f"""
         <div class="kpi-card">
-            <div class="kpi-label">Relationships</div>
-            <div class="kpi-value">{fmt_num(get_metric("Total Relationships"))}</div>
-            <div class="kpi-sub">Biological & spatial edges</div>
+            <div class="kpi-label" style="color:#334155 !important;">Relationships</div>
+            <div class="kpi-value" style="color:#000000 !important;">{fmt_num(get_metric("Total Relationships"))}</div>
+            <div class="kpi-sub" style="color:#475569 !important;">Biological & spatial edges</div>
         </div>
         """, unsafe_allow_html=True)
 
@@ -396,8 +461,8 @@ if page == "Executive Overview":
     # Mid-Semester Milestone Progression Chart
     milestone_img = "analysis/data_milestone_target.png"
     if os.path.exists(milestone_img):
-        st.markdown('<div class="section-title">Data Ingestion Scaling Milestone</div>', unsafe_allow_html=True)
-        st.markdown('<div class="section-subtitle">Mid-semester baseline achieved vs. final submission target across three core data layers.</div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-title" style="color:#000000 !important; font-size:20px; font-weight:750;">Data Ingestion Scaling Milestone</div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-subtitle" style="color:#334155 !important; font-weight:500;">Mid-semester baseline achieved vs. final submission target across three core data layers.</div>', unsafe_allow_html=True)
         st.image(milestone_img, caption="Figure 1: Current Ingested Points (5,550) vs Project Target (10,000)", use_container_width=True)
 
     st.markdown("<div style='height: 16px;'></div>", unsafe_allow_html=True)
@@ -406,8 +471,8 @@ if page == "Executive Overview":
     col_left, col_right = st.columns(2)
 
     with col_left:
-        st.markdown('<div class="section-title">Longitudinal Surveillance Trajectory</div>', unsafe_allow_html=True)
-        st.markdown('<div class="section-subtitle">Temporal distribution of research documents and outbreak reports (1965–2027).</div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-title" style="color:#000000 !important; font-size:20px; font-weight:750;">Longitudinal Surveillance Trajectory</div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-subtitle" style="color:#334155 !important; font-weight:500;">Temporal distribution of research documents and outbreak reports (1965–2027).</div>', unsafe_allow_html=True)
 
         if len(temporal) > 0 and "year" in temporal.columns:
             temp_df = temporal.copy()
@@ -428,14 +493,14 @@ if page == "Executive Overview":
                 margin=dict(l=10, r=10, t=10, b=10),
                 plot_bgcolor="#ffffff",
                 paper_bgcolor="#ffffff",
-                xaxis=dict(showgrid=True, gridcolor="#f1f5f9"),
-                yaxis=dict(showgrid=True, gridcolor="#f1f5f9")
+                xaxis=dict(showgrid=True, gridcolor="#e2e8f0", title_font=dict(color="#000000"), tickfont=dict(color="#000000")),
+                yaxis=dict(showgrid=True, gridcolor="#e2e8f0", title_font=dict(color="#000000"), tickfont=dict(color="#000000"))
             )
             st.plotly_chart(fig_t, use_container_width=True)
 
     with col_right:
-        st.markdown('<div class="section-title">Knowledge Graph Entity Composition</div>', unsafe_allow_html=True)
-        st.markdown('<div class="section-subtitle">Breakdown of extracted biomedical, temporal, and spatial node types.</div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-title" style="color:#000000 !important; font-size:20px; font-weight:750;">Knowledge Graph Entity Composition</div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-subtitle" style="color:#334155 !important; font-weight:500;">Breakdown of extracted biomedical, temporal, and spatial node types.</div>', unsafe_allow_html=True)
 
         if len(nodes) > 0 and "type" in nodes.columns:
             counts = nodes["type"].value_counts().reset_index()
@@ -451,13 +516,14 @@ if page == "Executive Overview":
             fig_p.update_layout(
                 height=340,
                 margin=dict(l=10, r=10, t=10, b=10),
-                paper_bgcolor="#ffffff"
+                paper_bgcolor="#ffffff",
+                legend=dict(font=dict(color="#000000"))
             )
             st.plotly_chart(fig_p, use_container_width=True)
 
     # Top Signals Preview
-    st.markdown('<div class="section-title">Priority Early-Warning Signals</div>', unsafe_allow_html=True)
-    st.markdown('<div class="section-subtitle">Top prioritized pathogen threats ranked by compound velocity, acceleration, and cross-source corroboration.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title" style="color:#000000 !important; font-size:20px; font-weight:750;">Priority Early-Warning Signals</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-subtitle" style="color:#334155 !important; font-weight:500;">Top prioritized pathogen threats ranked by compound velocity, acceleration, and cross-source corroboration.</div>', unsafe_allow_html=True)
 
     if len(signals) > 0:
         top_sig = signals.head(4)
@@ -467,10 +533,10 @@ if page == "Executive Overview":
                 st.markdown(f"""
                 <div class="signal-item">
                     <div style="display:flex; justify-content:space-between; align-items:flex-start;">
-                        <span class="signal-title">{str(row['disease']).title()}</span>
+                        <span class="signal-title" style="color:#000000 !important;">{str(row['disease']).title()}</span>
                         <span class="signal-score-badge">{float(row['signal_score']):.1f}</span>
                     </div>
-                    <div class="signal-meta">
+                    <div class="signal-meta" style="color:#1e293b !important;">
                         Recent Activity: <b>{row['recent_mentions']}</b><br>
                         Source Breadth: <b>{row['source_count']}</b> source(s)<br>
                         Surveillance Span: <b>{row['year_count']}</b> yr(s)
@@ -486,8 +552,10 @@ elif page == "Emerging Risk Signals":
 
     st.markdown("""
     <div class="header-box">
-        <h1 class="header-title">Emerging Pathogen Risk Scoring & Signal Detection</h1>
-        <div class="header-subtitle">
+        <div class="header-title" style="color: #000000 !important; font-size: 28px; font-weight: 800; line-height: 1.2;">
+            Emerging Pathogen Risk Scoring & Signal Detection
+        </div>
+        <div class="header-subtitle" style="color: #1e293b !important; font-size: 14px; margin-top: 8px; line-height: 1.5; font-weight: 500;">
             Multi-factor quantitative prioritization evaluating velocity, recent acceleration, cross-source breadth, 
             and graph transmission centrality.
         </div>
@@ -496,12 +564,12 @@ elif page == "Emerging Risk Signals":
 
     # Formula Box
     st.markdown("""
-    <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:16px 20px; margin-bottom:20px;">
-        <div style="font-size:12px; font-weight:700; color:#475569; text-transform:uppercase; letter-spacing:0.5px;">Compound Risk Metric Formulation</div>
-        <div style="font-size:14px; color:#1e293b; margin-top:6px;">
+    <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; padding:16px 20px; margin-bottom:20px;">
+        <div style="font-size:12px; font-weight:700; color:#334155; text-transform:uppercase; letter-spacing:0.5px;">Compound Risk Metric Formulation</div>
+        <div style="font-size:14px; color:#000000; font-weight:600; margin-top:6px;">
             <code>Score = 0.40 · Velocity (Recent Mentions) + 0.25 · Acceleration (Growth Rate) + 0.20 · Source Diversity + 0.15 · Centrality (In-Degree)</code>
         </div>
-        <div style="font-size:12px; color:#64748b; margin-top:6px;">
+        <div style="font-size:12px; color:#334155; margin-top:6px;">
             The indicator standardizes publication surge rates against historical baselines to surface emerging zoonotic spillovers.
         </div>
     </div>
@@ -531,18 +599,18 @@ elif page == "Emerging Risk Signals":
             labels={"signal_score": "Composite Signal Score", "disease": "Pathogen / Condition"},
             text="signal_score"
         )
-        fig_bar.update_traces(texttemplate="%{text:.1f}", textposition="outside")
+        fig_bar.update_traces(texttemplate="%{text:.1f}", textposition="outside", textfont=dict(color="#000000"))
         fig_bar.update_layout(
             height=500,
             plot_bgcolor="#ffffff",
             paper_bgcolor="#ffffff",
-            yaxis=dict(autorange="reversed"),
-            xaxis=dict(showgrid=True, gridcolor="#f1f5f9"),
+            yaxis=dict(autorange="reversed", tickfont=dict(color="#000000")),
+            xaxis=dict(showgrid=True, gridcolor="#e2e8f0", tickfont=dict(color="#000000")),
             coloraxis_showscale=False
         )
         st.plotly_chart(fig_bar, use_container_width=True)
 
-        st.markdown('<div class="section-title">Signal Metric Audit Table</div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-title" style="color:#000000 !important; font-size:20px; font-weight:750;">Signal Metric Audit Table</div>', unsafe_allow_html=True)
         st.dataframe(filtered_sig, use_container_width=True, hide_index=True)
 
 # ============================================================
@@ -553,8 +621,10 @@ elif page == "Temporal Surveillance":
 
     st.markdown("""
     <div class="header-box">
-        <h1 class="header-title">Longitudinal Temporal Surveillance (1965–2027)</h1>
-        <div class="header-subtitle">
+        <div class="header-title" style="color: #000000 !important; font-size: 28px; font-weight: 800; line-height: 1.2;">
+            Longitudinal Temporal Surveillance (1965–2027)
+        </div>
+        <div class="header-subtitle" style="color: #1e293b !important; font-size: 14px; margin-top: 8px; line-height: 1.5; font-weight: 500;">
             Historical analysis of epidemic reporting, publication volumes, and inflection peaks across five decades of surveillance records.
         </div>
     </div>
@@ -584,12 +654,12 @@ elif page == "Temporal Surveillance":
             height=450,
             plot_bgcolor="#ffffff",
             paper_bgcolor="#ffffff",
-            xaxis=dict(showgrid=True, gridcolor="#f1f5f9", dtick=2),
-            yaxis=dict(showgrid=True, gridcolor="#f1f5f9")
+            xaxis=dict(showgrid=True, gridcolor="#e2e8f0", dtick=2, tickfont=dict(color="#000000")),
+            yaxis=dict(showgrid=True, gridcolor="#e2e8f0", tickfont=dict(color="#000000"))
         )
         st.plotly_chart(fig_line, use_container_width=True)
 
-        st.markdown('<div class="section-title">Annual Record Ingestion Counts</div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-title" style="color:#000000 !important; font-size:20px; font-weight:750;">Annual Record Ingestion Counts</div>', unsafe_allow_html=True)
         st.dataframe(temp_df, use_container_width=True, hide_index=True)
 
 # ============================================================
@@ -600,8 +670,10 @@ elif page == "Geospatial Intelligence":
 
     st.markdown("""
     <div class="header-box">
-        <h1 class="header-title">Geospatial Wildlife & Vector Intelligence</h1>
-        <div class="header-subtitle">
+        <div class="header-title" style="color: #000000 !important; font-size: 28px; font-weight: 800; line-height: 1.2;">
+            Geospatial Wildlife & Vector Intelligence
+        </div>
+        <div class="header-subtitle" style="color: #1e293b !important; font-size: 14px; margin-top: 8px; line-height: 1.5; font-weight: 500;">
             Georeferenced occurrence observations from the Global Biodiversity Information Facility (GBIF) 
             mapping reservoir vectors across India.
         </div>
@@ -640,15 +712,16 @@ elif page == "Geospatial Intelligence":
                 fig_geo.update_layout(
                     height=500,
                     margin=dict(l=0, r=0, t=30, b=0),
-                    paper_bgcolor="#ffffff"
+                    paper_bgcolor="#ffffff",
+                    title_font=dict(color="#000000")
                 )
                 st.plotly_chart(fig_geo, use_container_width=True)
 
             with c_map2:
                 st.markdown("""
-                <div style="background:#ffffff; border:1px solid #e2e8f0; border-radius:8px; padding:18px; height:100%;">
-                    <div style="font-size:12px; font-weight:700; color:#64748b; text-transform:uppercase;">Spatial Coverage Specs</div>
-                    <div style="font-size:13px; color:#1e293b; margin-top:10px; line-height:1.7;">
+                <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:8px; padding:18px; height:100%;">
+                    <div style="font-size:12px; font-weight:700; color:#334155; text-transform:uppercase;">Spatial Coverage Specs</div>
+                    <div style="font-size:13px; color:#000000; margin-top:10px; line-height:1.7;">
                         • <b>Total Coordinates</b>: 3,000 points<br>
                         • <b>Bounding Lat</b>: 6.94° N – 33.82° N<br>
                         • <b>Bounding Lon</b>: 68.97° E – 95.95° E<br>
@@ -666,8 +739,10 @@ elif page == "Knowledge Graph Network":
 
     st.markdown("""
     <div class="header-box">
-        <h1 class="header-title">Knowledge Graph Network Topology</h1>
-        <div class="header-subtitle">
+        <div class="header-title" style="color: #000000 !important; font-size: 28px; font-weight: 800; line-height: 1.2;">
+            Knowledge Graph Network Topology
+        </div>
+        <div class="header-subtitle" style="color: #1e293b !important; font-size: 14px; margin-top: 8px; line-height: 1.5; font-weight: 500;">
             Heterogeneous multi-relational network linking documents, diseases, pathogens, reservoir animals, 
             geographic regions, and event timestamps.
         </div>
@@ -693,7 +768,7 @@ elif page == "Knowledge Graph Network":
         st.image(entity_dist_img, caption="Figure 6: Entity Distribution & High In-Degree Biomedical Transmission Hubs", use_container_width=True)
 
     if len(nodes) > 0 and "type" in nodes.columns:
-        st.markdown('<div class="section-title">Node Class Frequency Distribution</div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-title" style="color:#000000 !important; font-size:20px; font-weight:750;">Node Class Frequency Distribution</div>', unsafe_allow_html=True)
         node_freq = nodes["type"].value_counts().reset_index()
         node_freq.columns = ["Entity Class", "Total Nodes"]
 
@@ -708,7 +783,8 @@ elif page == "Knowledge Graph Network":
             height=380,
             plot_bgcolor="#ffffff",
             paper_bgcolor="#ffffff",
-            yaxis=dict(showgrid=True, gridcolor="#f1f5f9")
+            xaxis=dict(tickfont=dict(color="#000000")),
+            yaxis=dict(showgrid=True, gridcolor="#e2e8f0", tickfont=dict(color="#000000"))
         )
         st.plotly_chart(fig_node_bar, use_container_width=True)
 
@@ -720,8 +796,10 @@ elif page == "Biomedical Entity Profiler":
 
     st.markdown("""
     <div class="header-box">
-        <h1 class="header-title">Biomedical Entity Profiler</h1>
-        <div class="header-subtitle">
+        <div class="header-title" style="color: #000000 !important; font-size: 28px; font-weight: 800; line-height: 1.2;">
+            Biomedical Entity Profiler
+        </div>
+        <div class="header-subtitle" style="color: #1e293b !important; font-size: 14px; margin-top: 8px; line-height: 1.5; font-weight: 500;">
             Inspection interface for all discrete concepts extracted via biomedical Named Entity Recognition (NER).
         </div>
     </div>
@@ -748,8 +826,10 @@ elif page == "Methodology & Evaluation":
 
     st.markdown("""
     <div class="header-box">
-        <h1 class="header-title">System Methodology & Mid-Semester Implementation</h1>
-        <div class="header-subtitle">
+        <div class="header-title" style="color: #000000 !important; font-size: 28px; font-weight: 800; line-height: 1.2;">
+            System Methodology & Mid-Semester Implementation
+        </div>
+        <div class="header-subtitle" style="color: #1e293b !important; font-size: 14px; margin-top: 8px; line-height: 1.5; font-weight: 500;">
             Architecture pipeline, data flow specifications, and evaluation criteria for the Phase 1 defense.
         </div>
     </div>
@@ -768,13 +848,13 @@ elif page == "Methodology & Evaluation":
         st.markdown(f"""
         <div class="stage-card">
             <div class="stage-num">Stage {num}</div>
-            <div class="stage-title">{title}</div>
-            <div class="stage-desc">{desc}</div>
+            <div class="stage-title" style="color:#000000 !important;">{title}</div>
+            <div class="stage-desc" style="color:#334155 !important;">{desc}</div>
         </div>
         """, unsafe_allow_html=True)
 
     st.markdown("<div style='height: 16px;'></div>", unsafe_allow_html=True)
-    st.markdown('<div class="section-title">Mid-Semester Milestone Evaluation Matrix</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-title" style="color:#000000 !important; font-size:20px; font-weight:750;">Mid-Semester Milestone Evaluation Matrix</div>', unsafe_allow_html=True)
 
     matrix_data = {
         "Component": [
@@ -810,7 +890,7 @@ elif page == "Methodology & Evaluation":
 
 st.markdown("""
 <div class="dash-footer">
-    <b>OneHealth Nexus</b> — Big Data & Text Analytics Platform for Zoonotic Early Warning<br>
+    <b style="color:#000000 !important;">OneHealth Nexus</b> — Big Data & Text Analytics Platform for Zoonotic Early Warning<br>
     Mid-Semester Interim Evaluation Release | Version 0.5.0-beta
 </div>
 """, unsafe_allow_html=True)

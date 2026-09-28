@@ -1,0 +1,209 @@
+1. Apache Spark + Scala — Large-Scale Data Processing
+
+The collected WHO and PubMed datasets were processed using Apache Spark with Scala.
+
+The main tasks were:
+
+Combined the WHO and PubMed textual datasets.
+Performed data cleaning and preprocessing.
+Removed unnecessary or duplicate information.
+Prepared the textual data for NLP processing.
+Used Spark to demonstrate scalable/big-data processing.
+
+Final result:
+
+592 processed documents
+
+So:
+
+WHO + PubMed
+      ↓
+Apache Spark + Scala
+      ↓
+Cleaning & Preprocessing
+      ↓
+592 processed documents
+2. NLP — Entity Extraction using Python + spaCy
+
+The processed documents were then analyzed using Python and spaCy.
+
+The NLP pipeline identifies important entities from the documents:
+
+Diseases
+Pathogens
+Animals
+Locations
+Dates
+Documents
+
+For example:
+
+"Avian influenza was detected in poultry in India in 2024."
+
+        ↓ NLP
+
+Disease    → Avian influenza
+Animal     → poultry
+Location   → India
+Date       → 2024
+
+These extracted entities become the building blocks of the knowledge graph.
+
+3. Knowledge Graph — NetworkX
+
+The extracted entities and their relationships were represented as a Knowledge Graph using NetworkX.
+
+The graph connects:
+
+Documents
+    ↓
+Diseases
+    ↓
+Pathogens
+    ↓
+Animals
+    ↓
+Locations
+    ↓
+Dates
+
+The final knowledge graph contains:
+
+1,620 nodes
+2,611 relationships
+
+For example:
+
+Document
+   │
+   └── mentions ──► Disease
+                       │
+                       ├── caused_by ──► Pathogen
+                       │
+                       ├── affects ──► Animal
+                       │
+                       └── reported_in ──► Location
+                                             │
+                                             └── Date
+4. Temporal Analysis
+
+The project then analyzes the time dimension of disease-related information.
+
+It examines how disease-related mentions and relationships change over time.
+
+For example:
+
+2022 → Disease activity
+2023 → Disease activity increases
+2024 → More related records
+2025 → Recent activity
+
+This helps identify changes and patterns over different time periods.
+
+5. Spatial Analysis
+
+The GBIF animal-occurrence data is used for geographic analysis.
+
+It examines:
+
+Where animal species occur
+Geographic distribution of species
+Locations associated with disease-related information
+
+Conceptually:
+
+GBIF
+  ↓
+Animal occurrence
+  ↓
+Geographic location
+  ↓
+Spatial distribution
+
+This adds the One Health connection between disease, animals, and geography.
+
+6. Emerging Signal Detection
+
+The project calculates a project-defined emerging signal indicator.
+
+The indicator considers factors such as:
+
+Recent activity
+Source diversity
+Mention frequency
+
+Conceptually:
+
+Recent Activity
+       +
+Source Diversity
+       +
+Mention Frequency
+       ↓
+Emerging Signal Indicator
+
+Important: this is an analytical indicator created for the project, not an official outbreak prediction system.
+
+7. Streamlit Dashboard
+
+Finally, all the results were integrated into an interactive Streamlit dashboard.
+
+The dashboard contains:
+
+Intelligence Overview
+Emerging Signals
+Temporal Intelligence
+Spatial Intelligence
+Knowledge Graph
+Entity Intelligence
+Methodology
+
+So the complete VS Code workflow is:
+
+        COLAB DATA
+             │
+             ▼
+    WHO + PubMed + GBIF
+             │
+             ▼
+   ┌─────────────────────┐
+   │ Apache Spark + Scala │
+   │ Data Processing      │
+   └─────────────────────┘
+             │
+             ▼
+      592 Documents
+             │
+             ▼
+   ┌─────────────────────┐
+   │ Python + spaCy       │
+   │ NLP Entity Extraction│
+   └─────────────────────┘
+             │
+             ▼
+      Entities + Relations
+             │
+             ▼
+   ┌─────────────────────┐
+   │ NetworkX             │
+   │ Knowledge Graph      │
+   └─────────────────────┘
+             │
+             ▼
+   1,620 Nodes
+   2,611 Relationships
+             │
+       ┌─────┴─────┐
+       ▼           ▼
+   Temporal     Spatial
+   Analysis     Analysis
+       │           │
+       └─────┬─────┘
+             ▼
+   Emerging Signal
+      Detection
+             │
+             ▼
+   ┌─────────────────────┐
+   │ Streamlit Dashboard  │
+   └─────────────────────┘

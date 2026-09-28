@@ -1,0 +1,161 @@
+OneHealth Nexus – Data Collection and Processing
+
+1. Project Structure
+
+- Created the OneHealth Nexus project structure.
+- Created the following directories:
+  - "OneHealth_Nexus/"
+  - "data/raw/"
+  - "data/processed/"
+
+2. Data Collection and Helper Functions
+
+Created helper functions for efficient data collection and processing, including:
+
+- Text-cleaning function
+- Safe dictionary field extraction
+- API request function with a retry mechanism
+
+---
+
+3. WHO Disease Outbreak Data Collection
+
+- Collected WHO Disease Outbreak News data.
+- Connected to the WHO API.
+- Retrieved 50 WHO outbreak records.
+- Extracted the following fields:
+  - Publication date
+  - Title
+  - Overview
+  - Epidemiology
+  - Assessment
+  - Advice
+  - Response
+  - Further information
+- Saved the collected data as:
+
+"who_outbreaks.csv"
+
+---
+
+4. PubMed Data Collection
+
+- Collected research articles using the PubMed/NCBI API.
+- Searched for the following topics:
+  - One Health
+  - Zoonotic disease
+  - Zoonoses
+  - Emerging infectious disease
+  - Spillover
+- Retrieved article information including:
+  - PMID
+  - Title
+  - Abstract
+  - Publication year
+  - Journal
+- Removed duplicate PMIDs.
+- Saved the collected data as:
+
+"pubmed.csv"
+
+---
+
+5. GBIF Biodiversity and Animal Occurrence Data Collection
+
+- Collected biodiversity and animal occurrence data using the GBIF API.
+- Applied the following filters:
+  - Kingdom: Animalia
+  - Country: India
+  - Records containing geographic coordinates
+- Extracted:
+  - Species
+  - Scientific name
+  - Taxonomy
+  - Country/State
+  - Locality
+  - Latitude
+  - Longitude
+  - Year
+  - Event date
+  - Dataset
+- Removed duplicate GBIF records.
+- Saved the collected data as:
+
+"gbif.csv"
+
+---
+
+6. Data Integration and Text Processing
+
+Combined the WHO and PubMed datasets into a common document dataset.
+
+Common Dataset Structure
+
+- "document_id"
+- "text"
+- "date"
+- "source"
+
+Text Cleaning
+
+Performed basic text preprocessing by:
+
+- Removing HTML/XML tags
+- Decoding HTML entities
+- Removing unnecessary line breaks and tabs
+- Normalizing spaces
+- Removing unwanted characters
+- Removing empty documents
+- Calculating text length
+- Removing duplicate document text
+
+Processed Datasets
+
+Created the following cleaned datasets:
+
+- "cleaned_documents.csv"
+- "cleaned_gbif.csv"
+
+---
+
+7. Dataset Summary
+
+Created a dataset summary containing:
+
+- WHO record count
+- PubMed record count
+- GBIF record count
+- Combined document count
+- Corresponding file paths
+
+Saved the summary as:
+
+"data_summary.csv"
+
+---
+
+8. Final Data Validation
+
+Performed final validation of the collected and processed data.
+
+The validation included:
+
+- Checking whether all required CSV files exist
+- Displaying dataset information
+- Displaying document sources
+- Displaying document columns
+- Displaying GBIF columns
+
+---
+
+9. Final Data Packaging
+
+Created a ZIP archive containing the collected and processed project data.
+
+Final ZIP file:
+
+"OneHealth_Nexus_data.zip"
+
+The ZIP file contains the required raw and processed datasets generated during the project.
+
+The ZIP file was downloaded from Google Colab.

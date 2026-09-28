@@ -24,7 +24,7 @@ object OneHealthPreprocessing {
     // Read dataset
     val df = spark.read
       .option("header", "true")
-      .option("inferSchema", "true")
+      .option("inferSchema", "false")
       .csv(inputPath)
 
     println("\nInput records:")
@@ -73,6 +73,15 @@ object OneHealthPreprocessing {
 
     Files.write(
       outputFile,
+      (header + body).getBytes(StandardCharsets.UTF_8)
+    )
+
+    val rootSparkDir = Paths.get("spark_output")
+    if (!Files.exists(rootSparkDir)) {
+      Files.createDirectories(rootSparkDir)
+    }
+    Files.write(
+      rootSparkDir.resolve("processed_documents.txt"),
       (header + body).getBytes(StandardCharsets.UTF_8)
     )
 

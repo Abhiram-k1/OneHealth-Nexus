@@ -1,6 +1,13 @@
 # OneHealth Nexus: Large-Scale NLP and Temporal Knowledge Graphs for Emerging Disease Intelligence
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://onehealth-nexus.streamlit.app/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-OneHealth--Nexus-blue?logo=github)](https://github.com/Abhiram-k1/OneHealth-Nexus)
+[![Data Points](https://img.shields.io/badge/Data%20Points-10%2C550%20(100%25%20Met)-success.svg)](DATA_STUDY.md)
+[![Progress](https://img.shields.io/badge/Midsem%20Progress-65%25%20(On%20Schedule)-blue.svg)](MIDSEM_PROGRESS_AND_PLAN.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 **An Integrated Big Data & Spatio-Temporal Intelligence Platform for Zoonotic Disease Surveillance**  
+**Live Cloud Dashboard:** [https://onehealth-nexus.streamlit.app/](https://onehealth-nexus.streamlit.app/)  
 **Core Technologies:** Apache Spark, Scala, spaCy, NetworkX, Streamlit, Plotly, Pandas, NCBI Entrez, GBIF API
 
 ---
@@ -566,10 +573,16 @@ This orchestrates:
 4. Analytical Modules (`analysis/run_analysis.py`) $\rightarrow$ generates temporal trends across 53 years, spatial distributions over 5,500 India coordinates, and emerging signal scores.
 
 ### Step 3: Launching the Interactive Streamlit Dashboard
+
+#### Option A: Live Cloud Deployment (Instant Browser Access)
+Access the live production dashboard directly without local installation:  
+👉 **[https://onehealth-nexus.streamlit.app/](https://onehealth-nexus.streamlit.app/)**
+
+#### Option B: Local Execution
 ```powershell
-streamlit run dashboard\app.py
+streamlit run app.py
 ```
-Open your browser at `http://localhost:8501` to access the interactive OneHealth Nexus Intelligence Center.
+Open your browser at `http://localhost:8501` to access the interactive OneHealth Nexus Intelligence Center locally.
 
 ---
 

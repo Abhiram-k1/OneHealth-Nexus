@@ -4,7 +4,8 @@
 **Evaluation Milestone**: Mid-Semester Progress Review (Phase 1 & Phase 2 Gate)  
 **Overall Project Progress**: **65% Completed** (On Schedule for 10-Week Timeline)  
 **Data Milestone Status**: **10,550 Data Points Ingested (>105% of 10,000 Target Achieved — 100% Complete)**  
-**Repository**: [https://github.com/Abhiram-k1/OneHealth-Nexus](https://github.com/Abhiram-k1/OneHealth-Nexus)  
+**Live Cloud Dashboard**: [https://onehealth-nexus.streamlit.app/](https://onehealth-nexus.streamlit.app/)  
+**GitHub Repository**: [https://github.com/Abhiram-k1/OneHealth-Nexus](https://github.com/Abhiram-k1/OneHealth-Nexus)  
 
 ---
 

@@ -436,6 +436,13 @@ if page == "🏠 Intelligence Overview":
         )
 
     # --------------------------------------------------------
+    # DATA MILESTONE PROGRESSION
+    # --------------------------------------------------------
+    if os.path.exists("analysis/data_milestone_target.png"):
+        st.markdown('<div class="section-title">📊 Multi-Modal Data Scaling Progression</div>', unsafe_allow_html=True)
+        st.image("analysis/data_milestone_target.png", caption="OneHealth Nexus — Data Scaling Progression: Current 5,550 Points vs 10,000 Target", use_container_width=True)
+
+    # --------------------------------------------------------
     # SIGNAL PREVIEW
     # --------------------------------------------------------
 
@@ -487,6 +494,9 @@ elif page == "🚨 Emerging Signals":
         '</div>',
         unsafe_allow_html=True
     )
+
+    if os.path.exists("analysis/emerging_signals_ranking.png"):
+        st.image("analysis/emerging_signals_ranking.png", caption="OneHealth Nexus — Emerging Disease Risk Prioritization Ranking", use_container_width=True)
 
     signals["signal_score"] = pd.to_numeric(
         signals["signal_score"],
@@ -617,6 +627,10 @@ elif page == "📈 Temporal Intelligence":
         hide_index=True
     )
 
+    if os.path.exists("analysis/temporal_longitudinal_surge.png"):
+        st.markdown("### Longitudinal Historical Outbreak Surge (1990–2027)")
+        st.image("analysis/temporal_longitudinal_surge.png", caption="OneHealth Nexus — 53-Year Longitudinal Outbreak Surveillance Activity", use_container_width=True)
+
 
 # ============================================================
 # PAGE 4 — SPATIAL INTELLIGENCE
@@ -720,6 +734,15 @@ elif page == "🌎 Spatial Intelligence":
         "They should not be interpreted individually as disease observations."
     )
 
+    spatial_vis = "analysis/spatial_biodiversity_heatmap.png"
+    if os.path.exists(spatial_vis):
+        st.markdown("#### 🗺️ High-Resolution Spatial Density & Hotspot Map")
+        st.image(
+            spatial_vis,
+            caption="Spatial Distribution of 3,000 Animal Occurrences in India (Western Ghats, Indo-Gangetic, Himalaya)",
+            use_container_width=True
+        )
+
 
 # ============================================================
 # PAGE 5 — KNOWLEDGE GRAPH
@@ -802,6 +825,15 @@ elif page == "🕸️ Knowledge Graph":
         fig_nodes,
         use_container_width=True
     )
+
+    dist_image = "knowledge_graph/entity_distribution.png"
+    if os.path.exists(dist_image):
+        st.markdown("#### 🔬 Graph Topology & Key Transmission Hubs")
+        st.image(
+            dist_image,
+            caption="Entity Class Distribution & Highest Connected Biomedical Hubs (2,720 Nodes, 10,946 Relationships)",
+            use_container_width=True
+        )
 
 
 # ============================================================

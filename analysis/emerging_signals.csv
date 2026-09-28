@@ -1,18 +1,19 @@
 disease,total_mentions,recent_mentions,source_count,year_count,signal_score
-influenza,17,16,2,2,84.06
-avian influenza,15,14,2,2,81.67
-rabies,13,13,1,1,73.0
-covid-19,8,8,1,1,68.0
-covid,8,8,1,1,68.0
-tuberculosis,7,7,1,1,67.0
-ebola,6,6,1,1,66.0
-dengue,6,6,1,1,66.0
-coronavirus,6,6,1,1,66.0
-nipah,5,5,1,1,65.0
-mpox,4,4,1,1,64.0
-typhoid,4,4,1,1,64.0
-hepatitis,3,3,1,1,63.0
-monkeypox,2,2,1,1,62.0
-malaria,2,2,1,1,62.0
-cholera,1,1,1,1,61.0
-measles,1,1,1,1,61.0
+dengue,309,172,1,5,57.83
+malaria,13,6,2,6,56.08
+mpox,311,148,1,3,53.79
+monkeypox,312,146,1,8,53.4
+avian influenza,228,60,2,19,53.16
+influenza,238,62,2,19,53.03
+coronavirus,28,6,2,9,50.71
+ebola,312,63,2,8,50.1
+nipah,26,8,1,8,45.38
+covid,52,4,2,7,43.85
+covid-19,52,4,2,7,43.85
+hepatitis,12,4,1,4,38.67
+tuberculosis,15,4,1,5,38.33
+rabies,290,11,1,43,31.9
+typhoid,6,0,2,1,26.0
+cholera,5,0,2,2,25.0
+measles,2,0,2,2,22.0
+bird flu,1,0,1,1,11.0

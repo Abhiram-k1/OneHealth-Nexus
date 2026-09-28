@@ -1,10 +1,10 @@
 metric,value
-Total Nodes,1620.0
-Total Relationships,2611.0
-Graph Density,0.0009955085824964352
-Documents,557.0
-Dates,544.0
-Locations,470.0
-Animals,21.0
-Diseases,17.0
-Pathogens,11.0
+Total Nodes,2720.0
+Total Relationships,10946.0
+Graph Density,0.001480053220258313
+Documents,2550.0
+Dates,83.0
+Locations,24.0
+Animals,25.0
+Diseases,23.0
+Pathogens,15.0

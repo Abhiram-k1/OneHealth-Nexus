@@ -1,7 +1,7 @@
 metric,value
-Total GBIF records,300.0
-Records with valid coordinates,300.0
-Minimum latitude,8.484364
-Maximum latitude,31.420114
-Minimum longitude,71.676322
-Maximum longitude,94.628057
+Total GBIF records,3000.0
+Records with valid coordinates,3000.0
+Minimum latitude,6.9432
+Maximum latitude,33.823217
+Minimum longitude,68.970499
+Maximum longitude,95.951691

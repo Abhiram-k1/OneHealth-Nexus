@@ -4,23 +4,6 @@
 **Course:** Text Analytics (TA) & Big Data Analytics (BDA)  
 **Department of Artificial Intelligence & Data Science, Amrita Vishwa Vidyapeetham, Delhi NCR, Faridabad**
 
----
-
-## Academic Information & Team Credentials
-
-- **Institution:** Amrita Vishwa Vidyapeetham, Delhi NCR Campus, Faridabad
-- **Department:** Department of Artificial Intelligence & Data Science (AIDS)
-- **Subject Coordinators & Mentors:**
-  - **Dr. Ranjit Panigrahi**, Associate Professor
-  - **Dr. Barkha Singh**, Assistant Professor
-- **Project Team Members:**
-  - **Anagha Manoj** — Roll No: `DL.AI.U4AID24105`
-  - **Mimansha Goyal** — Roll No: `DL.AI.U4AID24123`
-  - **Tanvi Bhardwaj** — Roll No: `DL.AI.U4AID24136`
-  - **Kundurthi Abhiram** — Roll No: `DL.AI.U4AID24144`
-
----
-
 ## Executive Summary & Abstract
 
 Emerging infectious diseases (EIDs) poses existential threats to global public health. More than 70% of emerging human pathogens are zoonotic, originating at the interface where humans, domestic livestock, and wild animal populations intersect with changing environmental conditions. Despite the availability of rich open-access biological and epidemiological data, disease surveillance remains fundamentally fragmented:

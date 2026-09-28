@@ -291,14 +291,25 @@ st.markdown("""
 # DATA INGESTION
 # ============================================================
 
-summary_file = "knowledge_graph/graph_summary.csv"
-entities_file = "knowledge_graph/important_entities.csv"
-temporal_file = "analysis/temporal_summary.csv"
-signal_file = "analysis/emerging_signals.csv"
-nodes_file = "knowledge_graph/nodes.csv"
-relationships_file = "knowledge_graph/relationships.csv"
-gbif_file = "data/processed/cleaned_gbif.csv"
-docs_file = "data/processed/cleaned_documents.csv"
+_CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.abspath(os.path.join(_CURRENT_DIR, "..")) if os.path.basename(_CURRENT_DIR) == "dashboard" else _CURRENT_DIR
+
+def resolve_path(rel_path):
+    p = os.path.join(BASE_DIR, rel_path)
+    if os.path.exists(p):
+        return p
+    if os.path.exists(rel_path):
+        return rel_path
+    return p
+
+summary_file = resolve_path("knowledge_graph/graph_summary.csv")
+entities_file = resolve_path("knowledge_graph/important_entities.csv")
+temporal_file = resolve_path("analysis/temporal_summary.csv")
+signal_file = resolve_path("analysis/emerging_signals.csv")
+nodes_file = resolve_path("knowledge_graph/nodes.csv")
+relationships_file = resolve_path("knowledge_graph/relationships.csv")
+gbif_file = resolve_path("data/processed/cleaned_gbif.csv")
+docs_file = resolve_path("data/processed/cleaned_documents.csv")
 
 summary = pd.read_csv(summary_file) if os.path.exists(summary_file) else pd.DataFrame(columns=["metric", "value"])
 entities = pd.read_csv(entities_file) if os.path.exists(entities_file) else pd.DataFrame()

@@ -1,36 +1,42 @@
 # OneHealth Nexus: Large-Scale NLP and Temporal Knowledge Graphs for Emerging Disease Intelligence
 
-**B.Tech Artificial Intelligence and Data Science (AIDS) — Semester V (UG-III)**  
-**Course:** Text Analytics (TA) & Big Data Analytics (BDA)  
-**Department of Artificial Intelligence & Data Science, Amrita Vishwa Vidyapeetham, Delhi NCR, Faridabad**
-
----
-
-## Academic Information & Team Credentials
-
-- **Institution:** Amrita Vishwa Vidyapeetham, Delhi NCR Campus, Faridabad
-- **Department:** Department of Artificial Intelligence & Data Science (AIDS)
-- **Subject Coordinators & Mentors:**
-  - **Dr. Ranjit Panigrahi**, Associate Professor
-  - **Dr. Barkha Singh**, Assistant Professor
-- **Project Team Members:**
-  - **Anagha Manoj** — Roll No: `DL.AI.U4AID24105`
-  - **Mimansha Goyal** — Roll No: `DL.AI.U4AID24123`
-  - **Tanvi Bhardwaj** — Roll No: `DL.AI.U4AID24136`
-  - **Kundurthi Abhiram** — Roll No: `DL.AI.U4AID24144`
+**An Integrated Big Data & Spatio-Temporal Intelligence Platform for Zoonotic Disease Surveillance**  
+**Core Technologies:** Apache Spark, Scala, spaCy, NetworkX, Streamlit, Plotly, Pandas, NCBI Entrez, GBIF API
 
 ---
 
 ## Executive Summary & Abstract
 
-Emerging infectious diseases (EIDs) poses existential threats to global public health. More than 70% of emerging human pathogens are zoonotic, originating at the interface where humans, domestic livestock, and wild animal populations intersect with changing environmental conditions. Despite the availability of rich open-access biological and epidemiological data, disease surveillance remains fundamentally fragmented:
+Emerging infectious diseases (EIDs) pose severe threats to global biosecurity and public health. Over 70% of emerging human pathogens are zoonotic, originating at the interface where humans, domestic livestock, and wild animal populations intersect with changing environmental conditions. Despite the availability of rich open-access biological and epidemiological data, disease surveillance remains fundamentally fragmented:
 1. **Clinical & Epidemiological Reports:** Stored in unstructured text bulletins (e.g., World Health Organization Disease Outbreak News).
 2. **Biomedical Literature:** Buried in millions of peer-reviewed scientific articles (e.g., NCBI PubMed/MEDLINE).
 3. **Biodiversity & Ecological Vectors:** Documented in structured species occurrence repositories (e.g., Global Biodiversity Information Facility — GBIF).
 
 Because these domains are analyzed in isolation, cross-species transmission pathways, reservoir host distributions, and early warning signals of disease emergence often remain hidden until widespread outbreaks occur.
 
-**OneHealth Nexus** addresses this gap by engineering an integrated, large-scale analytical framework that unifies distributed Big Data processing, natural language processing (NLP), temporal knowledge graphs, and geospatial biodiversity analytics. Using **Apache Spark 4.0.1** and **Scala 2.13.16**, raw heterogeneous textual records are cleaned, deduplicated, and transformed into 592 standardized documents. An NLP pipeline powered by **spaCy** extracts multi-domain biomedical entities (diseases, pathogens, animal hosts, geographic locations, and dates) and maps their semantic relationships. A directed Knowledge Graph built with **NetworkX** models **1,620 entities and 2,611 semantic relationships**, enabling network topology and centrality analysis. Spatio-temporal intelligence modules analyze longitudinal disease patterns across time (2022–2027) and spatial animal host occurrences across India (GBIF coordinates: Lat 8.48°–31.42° N, Lon 71.68°–94.63° E). An analytical **Emerging Signal Indicator** synthesizes recency, source diversity, and mention volume to rank potential disease threats. The complete intelligence layer is deployed via an interactive, high-performance **Streamlit Dashboard** featuring seven dedicated intelligence modules.
+**OneHealth Nexus** addresses this gap by engineering an integrated, large-scale analytical framework that unifies distributed Big Data processing, natural language processing (NLP), temporal knowledge graphs, and geospatial biodiversity analytics. Using **Apache Spark 4.0.1** and **Scala 2.13.16**, raw heterogeneous textual records are cleaned, deduplicated, and transformed into 2,550 standardized documents. An NLP pipeline powered by **spaCy** extracts multi-domain biomedical entities (diseases, pathogens, animal hosts, geographic locations, and dates) and maps their semantic relationships. A directed Knowledge Graph built with **NetworkX** models **2,720 entities and 10,946 semantic relationships**, enabling network topology and centrality analysis. Spatio-temporal intelligence modules analyze longitudinal disease patterns across 53 calendar years (1965–2027) and spatial animal host occurrences across India (**3,000 GPS coordinates**, Lat $6.94^\circ - 33.82^\circ\text{ N}$, Lon $68.97^\circ - 95.95^\circ\text{ E}$). An analytical **Emerging Signal Indicator** synthesizes recency, source diversity, and mention volume to rank potential disease threats. The complete intelligence layer is deployed via an interactive, high-performance **Streamlit Dashboard** featuring seven dedicated intelligence modules.
+
+---
+
+## Data Milestone Status: Achieving 5,550+ Points Toward 10k Target
+
+The platform is designed around a multi-stage data scaling architecture aiming for **10,000+ multi-modal data points**. Currently, **5,550 verified data points (>55% of the final milestone)** are fully ingested, cleaned, and integrated into the active analytics engine:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                    ONEHEALTH NEXUS — ACTIVE DATA MILESTONE                      │
+├───────────────────────────────┬───────────────────────────────┬─────────────────┤
+│ Data Stream                   │ Modality                      │ Record Count    │
+├───────────────────────────────┼───────────────────────────────┼─────────────────┤
+│ WHO Disease Outbreak News     │ Clinical Outbreak Bulletins   │ 50 Bulletins    │
+│ NCBI PubMed / MEDLINE         │ Peer-Reviewed Literature      │ 2,500 Articles  │
+│ GBIF Biodiversity (India)     │ Georeferenced Coordinates     │ 3,000 Points    │
+├───────────────────────────────┼───────────────────────────────┼─────────────────┤
+│ TOTAL ACTIVE DATA POINTS      │ All Integrated Modalities     │ 5,550 RECORDS   │
+└───────────────────────────────┴───────────────────────────────┴─────────────────┘
+```
+
+> For full feature dictionaries, statistical distributions, missing value audits, and recommendations for scaling to 10,000+ records, refer to [`DATA_STUDY.md`](file:///c:/Users/abhi8/OneDrive/Desktop/ACADEMIC%20DOCS/SEM-5/TA&BDA/OneHealth-Nexus/DATA_STUDY.md).
 
 ---
 
@@ -43,7 +49,7 @@ Because these domains are analyzed in isolation, cross-species transmission path
                                    │                      │                     │
                      ┌─────────────▼─────────┐ ┌──────────▼─────────┐ ┌─────────▼─────────┐
                      │ WHO Outbreak News API │ │  PubMed NCBI API   │ │  GBIF India API   │
-                     │  (50 Outbreak DONs)   │ │  (1000 Articles)   │ │  (300 Occurrences)│
+                     │  (50 Outbreak DONs)   │ │  (2500 Articles)   │ │  (3000 Records)   │
                      └─────────────┬─────────┘ └──────────┬─────────┘ └─────────┬─────────┘
                                    │                      │                     │
                                    └──────────────┬───────┘                     │
@@ -56,7 +62,7 @@ Because these domains are analyzed in isolation, cross-species transmission path
                                    ┌─────────────────────────────┐              │
                                    │    APACHE SPARK + SCALA     │              │
                                    │ (Distributed Cleaning/Dedup)│              │
-                                   │   592 Processed Documents   │              │
+                                   │  2,550 Processed Documents  │              │
                                    └──────────────┬──────────────┘              │
                                                   ▼                             │
                                    ┌─────────────────────────────┐              │
@@ -68,7 +74,7 @@ Because these domains are analyzed in isolation, cross-species transmission path
                                                   ▼                             │
                                    ┌─────────────────────────────┐              │
                                    │   NETWORKX KNOWLEDGE GRAPH  │              │
-                                   │    1,620 Nodes | 2,611 Rels │              │
+                                   │   2,720 Nodes | 10,946 Rels │              │
                                    │   Topological Centralities  │              │
                                    └──────────────┬──────────────┘              │
                                                   │                             │
@@ -76,7 +82,7 @@ Because these domains are analyzed in isolation, cross-species transmission path
                                  ▼                                 ▼            ▼
                    ┌───────────────────────────┐     ┌────────────────────────────────────┐
                    │    TEMPORAL INTELLIGENCE  │     │   SPATIAL BIODIVERSITY OCCURRENCE  │
-                   │ (Yearly/Longitudinal Trend│     │ (GBIF Host Distribution in India)  │
+                   │ (53-Year Longitudinal Pan)│     │ (3000 GBIF Coordinates in India)   │
                    └─────────────┬─────────────┘     └──────────────────┬─────────────────┘
                                  │                                      │
                                  └────────────────┬─────────────────────┘
@@ -98,7 +104,7 @@ Because these domains are analyzed in isolation, cross-species transmission path
 
 | Tier / Module | Technology | Version | Primary Purpose |
 |---|---|---|---|
-| **Data Ingestion** | Python, `requests`, `xml.etree` | 3.12 / Standard | Automated REST harvesting with retry exponential backoff from WHO, PubMed, GBIF |
+| **Data Ingestion** | Python, `requests`, `urllib` | 3.12 / Standard | Automated REST harvesting with retry exponential backoff from WHO, PubMed, GBIF |
 | **Big Data Engine** | Apache Spark, Scala, SBT | Spark 4.0.1, Scala 2.13.16 | Large-scale resilient text preprocessing, schema filtering, deduplication, JVM I/O |
 | **NLP & Entity Extraction** | Python, spaCy, RegEx | spaCy 3.7+, `en_core_web_sm` | Named Entity Recognition (NER) for GPE, DATE, Disease, Pathogen, Animal taxa |
 | **Knowledge Graph Engine** | NetworkX, Neo4j driver | NetworkX 3.3+, Neo4j 5.20+ | Multi-relational directed graph modeling, degree centrality, betweenness, subgraph rendering |
@@ -113,76 +119,73 @@ Because these domains are analyzed in isolation, cross-species transmission path
 ### Stage 1: Multi-Source Heterogeneous Data Collection
 Data collection targets three distinct domains reflecting the One Health paradigm:
 1. **WHO Disease Outbreak News (DONs):** 50 outbreak reports covering international public health emergencies (Ebola, Cholera, Avian Influenza, Dengue, MERS, etc.).
-2. **PubMed / NCBI Entrez Biomedical Literature:** 1,000 articles retrieved using targeted domain search queries: `One Health`, `Zoonotic disease`, `Zoonoses`, `Emerging infectious disease`, `Spillover`. Extracted fields: PMID, Title, Abstract, Year, Journal.
-3. **GBIF Species Occurrence (Animalia in India):** 300 verified animal occurrences with valid geographic coordinates (latitude, longitude, species, kingdom, state/province, event date).
+2. **PubMed / NCBI Entrez Biomedical Literature:** 2,500 articles retrieved using targeted domain search queries: `One Health`, `Zoonotic disease`, `Zoonoses`, `Emerging infectious disease`, `Spillover`, `Nipah virus`, `Kyasanur Forest disease`, `Scrub typhus`, `Leptospirosis`.
+3. **GBIF Species Occurrence (Animalia in India):** 3,000 verified animal occurrences with valid geographic coordinates across classes *Mammalia*, *Aves*, *Reptilia*, and *Amphibia*.
 
-### Stage 2: Initial Normalization & Colab Pipeline
-- Performed HTML/XML tag stripping, HTML entity unescaping, whitespace canonicalization, character filtering, and deduplication.
-- Unified WHO and PubMed into a common schema: `document_id`, `source`, `date`, `clean_text`.
-- Validated output datasets: `cleaned_documents.csv` (2.34 MB), `cleaned_gbif.csv` (67.5 KB), and `data_summary.csv`.
+### Stage 2: Initial Normalization & Preprocessing
+- Strips HTML/XML markup, decodes HTML entities, replaces carriage returns, and removes whitespace irregularities.
+- Merges the text datasets into a 4-column canonical schema:
+  $$\text{Schema} = \left[ \text{document\_id}, \text{source}, \text{date}, \text{clean\_text} \right]$$
+- Exports normalized datasets: `cleaned_documents.csv`, `cleaned_gbif.csv`, and `data_summary.csv`.
 
 ### Stage 3: Distributed Big Data Processing with Apache Spark + Scala
 - Written in **Scala 2.13.16** utilizing **Apache Spark 4.0.1** with SBT project configuration.
 - Reads `data/processed/cleaned_documents.csv` via Spark SQL DataFrame API.
 - Implements distributed filtering: null elimination, length checks (`length(trim(col("clean_text"))) > 0`), and text deduplication (`dropDuplicates("clean_text")`).
-- Output: Exactly **592 verified processed documents** exported as a tab-delimited corpus (`processed_documents.txt`).
+- Output: Exactly **2,550 verified unique documents** exported as a tab-delimited corpus (`processed_documents.txt`).
 
-### Stage 4: Biomedical Natural Language Processing (spaCy)
-- Processes the 592 Spark-cleaned documents through spaCy's `en_core_web_sm` model and domain-specific regular expressions.
-- **Entity Extraction Categories:**
-  - `Disease`: Influenza, Avian Influenza, COVID-19, Dengue, Malaria, Cholera, Ebola, Mpox, Rabies, Tuberculosis, Typhoid, Measles, Nipah, Hepatitis.
-  - `Pathogen`: Virus, Coronavirus, SARS-CoV-2, H5N1, H7N9, Bacteria, Parasite, Fungus.
-  - `Animal Host`: Bird, Poultry, Chicken, Duck, Pig, Swine, Bat, Dog, Cat, Cattle, Cow, Livestock, Wildlife.
-  - `Location (GPE)`: Extracted via statistical NER (countries, states, outbreak epicenters).
-  - `Date (DATE)`: Extracted via statistical NER and temporal expressions.
-  - `Document`: Unique identifier node serving as provenance origin.
+### Stage 4: Biomedical Natural Language Processing (spaCy / RegEx Engine)
+- Extracts multi-domain biomedical entities:
+  - `Disease`: Influenza, Avian Influenza, COVID-19, Dengue, Malaria, Cholera, Ebola, Mpox, Rabies, Tuberculosis, Typhoid, Measles, Nipah, Hepatitis, Leptospirosis, Kyasanur Forest Disease, Scrub Typhus, Anthrax, Brucellosis.
+  - `Pathogen`: Virus, Influenza virus, Coronavirus, SARS-CoV-2, H5N1, H7N9, Ebolavirus, Bacteria, Orientia tsutsugamushi, Leptospira, Bacillus anthracis.
+  - `Animal Host`: Bird, Poultry, Chicken, Duck, Pig, Swine, Bat, Dog, Cat, Cattle, Cow, Livestock, Horse, Goat, Sheep, Wildlife, Rodent, Monkey, Primate.
+  - `Location (GPE)`: Geopolitical entities and epicenters (India, Kerala, Tamil Nadu, Karnataka, Maharashtra, Delhi, Assam, China, Egypt, etc.).
+  - `Date (DATE)`: Chronological references spanning 1965 to 2027.
+- Generates **2,720 unique nodes** and **10,946 directed relationships**.
 
 ### Stage 5: Temporal Knowledge Graph Construction (NetworkX)
 - Constructed as a directed graph $G = (V, E)$ in NetworkX.
 - **Graph Scale:**
-  - **Total Nodes ($|V|$):** **1,620**
-  - **Total Relationships ($|E|$):** **2,611**
-  - **Graph Density:** $0.0009955$
+  - **Total Nodes ($|V|$):** **2,720**
+  - **Total Relationships ($|E|$):** **10,946**
+  - **Graph Density:** $0.00148$
 - **Node Breakdown:**
-  - Documents: 557
-  - Dates: 544
-  - Locations: 470
-  - Animals: 21
-  - Diseases: 17
-  - Pathogens: 11
+  - Documents: 2,550
+  - Dates: 83
+  - Animals: 25
+  - Locations: 24
+  - Diseases: 23
+  - Pathogens: 15
 - **Relationship Semantics:**
   - `Document` $\xrightarrow{\text{MENTIONS\_DISEASE}}$ `Disease`
   - `Document` $\xrightarrow{\text{MENTIONS\_PATHOGEN}}$ `Pathogen`
   - `Document` $\xrightarrow{\text{MENTIONS\_ANIMAL}}$ `Animal`
   - `Document` $\xrightarrow{\text{MENTIONS\_LOCATION}}$ `Location`
   - `Document` $\xrightarrow{\text{HAS\_DATE}}$ `Date`
-  - Cross-domain inferences: `Animal` $\xrightarrow{\text{ASSOCIATED\_WITH}}$ `Disease`, `Pathogen` $\xrightarrow{\text{FOUND\_IN}}$ `Animal`, `Disease` $\xrightarrow{\text{REPORTED\_IN}}$ `Location`.
 
 ### Stage 6: Spatio-Temporal Intelligence & Signal Detection
-1. **Temporal Intelligence:** Converts dates to ISO years, tracks publication/outbreak density over time (464 records concentrated in 2026, baseline historical validation 2024–2025). Generates `temporal_summary.csv` and `temporal_trend.png`.
-2. **Spatial Biodiversity Intelligence:** Maps 300 GBIF animal occurrences across India. Coordinates bound the subcontinent: Latitude $8.484^\circ\text{ N}$ to $31.420^\circ\text{ N}$, Longitude $71.676^\circ\text{ E}$ to $94.628^\circ\text{ E}$. Generates `spatial_summary.csv` and `spatial_distribution.png`.
+1. **Temporal Intelligence:** Converts dates to ISO years, tracks longitudinal publication and outbreak patterns across 53 calendar years (1965 to 2027), with major contemporary volume in 2024 (641 docs), 2025 (518 docs), and 2026 (744 docs).
+2. **Spatial Biodiversity Intelligence:** Maps **3,000 GBIF animal occurrences across India**, bounding the entire subcontinent from South (Lat $6.94^\circ\text{ N}$) to North (Lat $33.82^\circ\text{ N}$), and West (Lon $68.97^\circ\text{ E}$) to East (Lon $95.95^\circ\text{ E}$).
 3. **Emerging Signal Detection Indicator:**
-   A transparent multi-factor analytical scoring heuristic calculated as:
+   Calculates a multi-factor analytical scoring heuristic:
    $$\text{Signal Score} = \left( 0.5 \times \text{Recency Score} + 0.3 \times \text{Source Diversity Score} + 0.2 \times \text{Mention Volume Score} \right) \times 100$$
-   - **Recency Score:** Ratio of recent-year mentions ($\ge \text{Year}_{\max} - 1$) to total mentions: $\frac{M_{\text{recent}}}{M_{\text{total}}}$
-   - **Source Diversity Score:** Ratio of distinct sources mentioning the disease: $\min\left(\frac{N_{\text{sources}}}{3}, 1.0\right)$
-   - **Mention Volume Score:** Activity scale threshold: $\min\left(\frac{M_{\text{total}}}{20}, 1.0\right)$
 
-   **Top Ranked Signals Identified:**
-   1. **Influenza:** 17 mentions, 16 recent, 2 sources $\rightarrow$ **Score: 84.06**
-   2. **Avian Influenza:** 15 mentions, 14 recent, 2 sources $\rightarrow$ **Score: 81.67**
-   3. **Rabies:** 13 mentions, 13 recent, 1 source $\rightarrow$ **Score: 73.00**
-   4. **COVID-19:** 8 mentions, 8 recent, 1 source $\rightarrow$ **Score: 68.00**
-   5. **Tuberculosis:** 7 mentions, 7 recent, 1 source $\rightarrow$ **Score: 67.00**
-   6. **Ebola / Dengue / Coronavirus:** 6 mentions each $\rightarrow$ **Score: 66.00**
-   7. **Nipah:** 5 mentions $\rightarrow$ **Score: 65.00**
+   **Top Ranked Signals (Expanded Corpus):**
+   1. **Dengue:** 309 mentions, 172 recent $\rightarrow$ **Score: 57.83**
+   2. **Malaria:** 13 mentions, 6 recent, 2 sources $\rightarrow$ **Score: 56.08**
+   3. **Mpox / Monkeypox:** 312 mentions, 148 recent $\rightarrow$ **Score: 53.79 / 53.40**
+   4. **Avian Influenza / Influenza:** 238 mentions, 62 recent, 2 sources $\rightarrow$ **Score: 53.16 / 53.03**
+   5. **Coronavirus:** 28 mentions, 6 recent, 2 sources $\rightarrow$ **Score: 50.71**
+   6. **Ebola:** 312 mentions, 63 recent, 2 sources $\rightarrow$ **Score: 50.10**
+   7. **Nipah:** 26 mentions, 8 recent $\rightarrow$ **Score: 45.38**
+   8. **COVID-19:** 52 mentions, 4 recent $\rightarrow$ **Score: 43.85**
 
 ### Stage 7: Streamlit Interactive Intelligence Dashboard
 The interactive application (`dashboard/app.py`) provides 7 synchronized analytical views:
-- **Tab 1: 🏠 Intelligence Overview** — Top-level metrics cards (592 documents, 1,620 nodes, 2,611 relationships, 300 GBIF records), top signal banner, and architecture flow diagram.
+- **Tab 1: 🏠 Intelligence Overview** — Top-level metrics cards (2,550 documents, 2,720 nodes, 10,946 relationships, 3,000 GBIF records), top signal banner, and architecture flow diagram.
 - **Tab 2: 🚨 Emerging Signals** — Ranked alert cards with composite scores, recency breakdowns, and source diversity tags.
-- **Tab 3: 📈 Temporal Intelligence** — Interactive Plotly time-series charts showing outbreak dynamics across years.
-- **Tab 4: 🌎 Spatial Intelligence** — Scatter distribution map plotting GBIF wildlife/domestic occurrences across Indian states and latitude/longitude bounds.
+- **Tab 3: 📈 Temporal Intelligence** — Interactive Plotly time-series charts showing outbreak dynamics across 53 years.
+- **Tab 4: 🌎 Spatial Intelligence** — Scatter distribution map plotting 3,000 GBIF wildlife/domestic occurrences across Indian states and latitude/longitude bounds.
 - **Tab 5: 🕸️ Knowledge Graph** — Subgraph visualizer and topological metrics table (top in-degree and out-degree central entities).
 - **Tab 6: 🧬 Entity Intelligence** — Frequency breakdowns by entity type (Diseases, Pathogens, Animals, Locations, Dates).
 - **Tab 7: 🔬 Methodology** — Full algorithmic transparency, formulas, One Health principles, and clinical disclaimer.
@@ -194,8 +197,9 @@ The interactive application (`dashboard/app.py`) provides 7 synchronized analyti
 ```
 OneHealth-Nexus/
 ├── .gitignore                      # Git exclusion rules (.venv, target, metals, pycache)
-├── README.md                       # Comprehensive Project Specification & Report
+├── README.md                       # Core Technical Specification & Platform Architecture
 ├── PSEUDO.md                       # Layman-Friendly Implementation Walkthrough & Viva Guide
+├── DATA_STUDY.md                   # Comprehensive Data Study, Feature Dictionaries & 10k Roadmap
 ├── build.sbt                       # Scala / SBT dependencies (Spark 4.0.1, Scala 2.13.16)
 ├── requirements.txt                # Python dependencies (Streamlit, spaCy, NetworkX, Plotly, etc.)
 ├── run_all.ps1                     # Complete turnkey PowerShell pipeline orchestrator
@@ -203,9 +207,9 @@ OneHealth-Nexus/
 │   ├── emerging_signals.py         # Signal scoring engine
 │   ├── emerging_signals.csv        # Output ranked signal dataset
 │   ├── spatial_analysis.py         # GBIF geospatial mapping script
-│   ├── spatial_summary.csv         # India bounding coordinates summary
+│   ├── spatial_summary.csv         # India bounding coordinates summary (3,000 points)
 │   ├── spatial_distribution.png    # India animal occurrence scatter plot
-│   ├── temporal_analysis.py        # Longitudinal time series script
+│   ├── temporal_analysis.py        # Longitudinal time series script (53 years)
 │   ├── temporal_summary.csv        # Output document counts by year
 │   ├── temporal_trend.png          # Longitudinal trend line chart
 │   └── run_analysis.py             # Unified analysis module coordinator
@@ -214,17 +218,17 @@ OneHealth-Nexus/
 ├── data/                           # Data storage tier
 │   ├── raw/                        # Raw API datasets (who_outbreaks.csv, pubmed.csv, gbif.csv)
 │   ├── processed/                  # Normalized datasets (cleaned_documents.csv, cleaned_gbif.csv)
-│   └── processed/spark_output/     # Spark output corpus (processed_documents.txt - 592 docs)
+│   └── processed/spark_output/     # Spark output corpus (processed_documents.txt - 2,550 docs)
 ├── docs/                           # Documentation, presentations, and design specifications
-│   ├── TA AND BDA.pptx             # Official project slide presentation
+│   ├── TA AND BDA.pptx             # Slide presentation
 │   ├── architecture_stack.jpeg     # Tech stack mapping diagram
 │   ├── spark_scala_plan.txt        # Spark + Scala data processing plan
 │   └── data_collection_plan.txt    # Data collection & schema architecture specification
 ├── knowledge_graph/                # Graph modeling tier
 │   ├── build_graph.py              # NetworkX graph generator & centrality analyzer
 │   ├── load_neo4j.py               # Neo4j property graph ingestion utility
-│   ├── nodes.csv                   # Graph nodes (1,620 entities)
-│   ├── relationships.csv           # Graph edges (2,611 relationships)
+│   ├── nodes.csv                   # Graph nodes (2,720 entities)
+│   ├── relationships.csv           # Graph edges (10,946 relationships)
 │   ├── graph_summary.csv           # Summary graph statistics & densities
 │   ├── important_entities.csv      # Degree centrality ranked entities
 │   └── onehealth_subgraph.png      # High-resolution subgraph visualization
@@ -268,15 +272,14 @@ python -m spacy download en_core_web_sm
 ```
 
 ### Step 2: One-Click End-to-End Pipeline Execution
-You can execute the entire pipeline with a single command via the PowerShell runner:
 ```powershell
 .\run_all.ps1
 ```
 This orchestrates:
-1. Scala + Apache Spark distributed preprocessing (`sbt run`) $\rightarrow$ generates `processed_documents.txt` (592 documents).
-2. spaCy NLP Entity Extraction (`nlp/entity_extraction.py`) $\rightarrow$ extracts entities and relationships into `nodes.csv` and `relationships.csv`.
+1. Scala + Apache Spark distributed preprocessing (`sbt run`) $\rightarrow$ generates `processed_documents.txt` (2,550 documents).
+2. spaCy NLP Entity Extraction (`nlp/entity_extraction.py`) $\rightarrow$ extracts entities and relationships into `nodes.csv` and `relationships.csv` (2,720 nodes, 10,946 edges).
 3. NetworkX Knowledge Graph Construction (`knowledge_graph/build_graph.py`) $\rightarrow$ builds graph, computes centralities, exports `important_entities.csv` and `onehealth_subgraph.png`.
-4. Analytical Modules (`analysis/run_analysis.py`) $\rightarrow$ generates temporal trends, spatial distributions, and emerging signal scores.
+4. Analytical Modules (`analysis/run_analysis.py`) $\rightarrow$ generates temporal trends across 53 years, spatial distributions over 3,000 India coordinates, and emerging signal scores.
 
 ### Step 3: Launching the Interactive Streamlit Dashboard
 ```powershell
@@ -291,22 +294,24 @@ Open your browser at `http://localhost:8501` to access the interactive OneHealth
 | Metric Dimension | Measured Empirical Value | Primary File / Artifact |
 |---|---|---|
 | **Raw WHO Outbreak Reports** | 50 records | `data/raw/who_outbreaks.csv` |
-| **Raw PubMed Scientific Articles** | 1,000 articles | `data/raw/pubmed.csv` |
-| **Raw GBIF Species Occurrences** | 300 records | `data/raw/gbif.csv` |
-| **Cleaned Document Corpus Size** | 2.34 MB | `data/processed/cleaned_documents.csv` |
-| **Spark Preprocessed Documents** | **592 documents** | `data/processed/spark_output/processed_documents.txt` |
-| **Knowledge Graph Nodes** | **1,620 nodes** | `knowledge_graph/nodes.csv` |
-| **Knowledge Graph Relationships** | **2,611 relationships** | `knowledge_graph/relationships.csv` |
-| **Graph Density** | $9.955 \times 10^{-4}$ | `knowledge_graph/graph_summary.csv` |
-| **Document Nodes** | 557 nodes | `knowledge_graph/graph_summary.csv` |
-| **Temporal Date Nodes** | 544 nodes | `knowledge_graph/graph_summary.csv` |
-| **Geographic Location Nodes** | 470 nodes | `knowledge_graph/graph_summary.csv` |
-| **Animal Host Nodes** | 21 nodes | `knowledge_graph/graph_summary.csv` |
-| **Disease Target Nodes** | 17 nodes | `knowledge_graph/graph_summary.csv` |
-| **Pathogen Nodes** | 11 nodes | `knowledge_graph/graph_summary.csv` |
-| **GBIF Valid Geographic Occurrences**| 300 coordinates (India) | `analysis/spatial_summary.csv` |
-| **Geographic Coverage (India)** | Lat: $8.48^\circ - 31.42^\circ\text{ N}$, Lon: $71.68^\circ - 94.63^\circ\text{ E}$ | `analysis/spatial_distribution.png` |
-| **Top Detected Emerging Signal** | Influenza / Avian Influenza (Score: 84.06 / 81.67) | `analysis/emerging_signals.csv` |
+| **Raw PubMed Scientific Articles** | 2,500 articles | `data/raw/pubmed.csv` |
+| **Raw GBIF Species Occurrences** | 3,000 records | `data/raw/gbif.csv` |
+| **Total Ingested Data Points** | **5,550 Data Points** (>55% of 10k target) | `data/processed/data_summary.csv` |
+| **Cleaned Document Corpus Size** | 2,550 unique documents | `data/processed/cleaned_documents.csv` |
+| **Spark Preprocessed Documents** | **2,550 documents** | `data/processed/spark_output/processed_documents.txt` |
+| **Knowledge Graph Nodes** | **2,720 nodes** | `knowledge_graph/nodes.csv` |
+| **Knowledge Graph Relationships** | **10,946 relationships** | `knowledge_graph/relationships.csv` |
+| **Graph Density** | $0.00148$ | `knowledge_graph/graph_summary.csv` |
+| **Document Nodes** | 2,550 nodes | `knowledge_graph/graph_summary.csv` |
+| **Temporal Date Nodes** | 83 nodes | `knowledge_graph/graph_summary.csv` |
+| **Geographic Location Nodes** | 24 nodes | `knowledge_graph/graph_summary.csv` |
+| **Animal Host Nodes** | 25 nodes | `knowledge_graph/graph_summary.csv` |
+| **Disease Target Nodes** | 23 nodes | `knowledge_graph/graph_summary.csv` |
+| **Pathogen Nodes** | 15 nodes | `knowledge_graph/graph_summary.csv` |
+| **GBIF Valid Geographic Occurrences**| **3,000 coordinates (India)** | `analysis/spatial_summary.csv` |
+| **Geographic Coverage (India)** | Lat: $6.94^\circ - 33.82^\circ\text{ N}$, Lon: $68.97^\circ - 95.95^\circ\text{ E}$ | `analysis/spatial_distribution.png` |
+| **Temporal Coverage** | 53 Calendar Years (1965 – 2027) | `analysis/temporal_summary.csv` |
+| **Top Detected Emerging Signals** | Dengue (57.83), Malaria (56.08), Mpox (53.79), Avian Flu (53.16) | `analysis/emerging_signals.csv` |
 
 ---
 
@@ -320,4 +325,4 @@ Open your browser at `http://localhost:8501` to access the interactive OneHealth
 ---
 
 ## Disclaimer
-The **OneHealth Nexus** platform and its Emerging Signal Detection indicator are analytical research and decision-support heuristics designed for academic evaluation in Big Data Analytics and Text Analytics. They do not constitute official epidemiological diagnostic software or certified clinical outbreak prediction tools.
+The **OneHealth Nexus** platform and its Emerging Signal Detection indicator are analytical research and decision-support heuristics. They do not constitute official epidemiological diagnostic software or certified clinical outbreak prediction tools.

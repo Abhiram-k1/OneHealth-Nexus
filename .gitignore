@@ -10,3 +10,4 @@ project/target/
 __pycache__/
 *.pyc
 .env
+scratch/

@@ -31,28 +31,17 @@ df = pd.read_csv(
 
 print("\nTotal documents:", len(df))
 
-# ------------------------------------------------------------
-# Convert date
-# ------------------------------------------------------------
-
-df["date"] = pd.to_datetime(df["date"], errors="coerce", utc=True)
-
+# Convert date robustly
+df["year"] = pd.to_numeric(df["date"].astype(str).str.extract(r"(\d{4})")[0], errors="coerce")
 
 # Remove invalid dates
-valid_df = df.dropna(
-    subset=["date"]
-).copy()
+valid_df = df.dropna(subset=["year"]).copy()
+valid_df["year"] = valid_df["year"].astype(int)
 
 print(
     "Documents with valid dates:",
     len(valid_df)
 )
-
-# ------------------------------------------------------------
-# Extract year
-# ------------------------------------------------------------
-
-valid_df["year"] = valid_df["date"].dt.year
 
 # ------------------------------------------------------------
 # Count documents by year

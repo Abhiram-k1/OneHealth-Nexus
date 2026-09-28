@@ -21,18 +21,10 @@ df = pd.read_csv(
 
 print("\nTotal documents:", len(df))
 
-# Convert dates
-df["date"] = pd.to_datetime(
-    df["date"],
-    errors="coerce",
-    utc=True
-)
-
-# Keep valid dates
-df = df.dropna(subset=["date"]).copy()
-
-# Extract year
-df["year"] = df["date"].dt.year
+# Extract year robustly
+df["year"] = pd.to_numeric(df["date"].astype(str).str.extract(r"(\d{4})")[0], errors="coerce")
+df = df.dropna(subset=["year"]).copy()
+df["year"] = df["year"].astype(int)
 
 # Disease keywords
 disease_keywords = [

@@ -1,5 +1,5 @@
-dataset,records,file
-WHO Disease Outbreak News,50,data/raw/who_outbreaks.csv
-PubMed,500,data/raw/pubmed.csv
-GBIF,300,data/raw/gbif.csv
-Combined Documents,550,data/processed/cleaned_documents.csv
+source,raw_records,processed_records
+WHO Outbreak News,50,50
+PubMed NCBI Literature,2500,2500
+GBIF India Biodiversity,3000,3000
+Total Combined Data Points,5550,5550

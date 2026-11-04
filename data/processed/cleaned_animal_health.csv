@@ -1,0 +1,11 @@
+event_id,disease,serotype_or_pathogen,animal_type,species,country,state_or_province,latitude,longitude,outbreak_start_date,status,cases,deaths,source,source_url
+WOAH-2023-AI-001,Avian Influenza,H5N1,Poultry,Gallus gallus domesticus (Chicken),India,Kerala,9.4981,76.3388,2023-01-12,Resolved,1250,890,WOAH WAHIS,https://wahis.woah.org/#/report-info?reportId=49812
+WOAH-2023-AI-002,Avian Influenza,H5N1,Wild Birds,Anser indicus (Bar-headed goose),India,Karnataka,15.3173,75.7139,2023-02-04,Resolved,45,38,WOAH WAHIS,https://wahis.woah.org/#/report-info?reportId=50123
+WOAH-2023-ASF-001,African Swine Fever,African swine fever virus (ASFV),Swine,Sus scrofa domesticus (Pig),India,Assam,26.2006,92.9376,2023-03-10,Ongoing,530,480,WOAH WAHIS,https://wahis.woah.org/#/report-info?reportId=50584
+FAO-2023-FMD-001,Foot and Mouth Disease,Aphthovirus (Serotype O),Livestock,Bos taurus (Cattle),India,Maharashtra,19.7515,75.7139,2023-04-18,Resolved,320,12,FAO EMPRES-i,https://empresplus.fao.org/disease-events/details/38291
+WOAH-2023-ANTH-001,Anthrax,Bacillus anthracis,Livestock,Capra hircus (Goat),India,Tamil Nadu,11.1271,78.6569,2023-05-22,Resolved,28,28,WOAH WAHIS,https://wahis.woah.org/#/report-info?reportId=51290
+WOAH-2023-RAB-001,Rabies,Lyssavirus,Canine,Canis lupus familiaris (Dog),India,Delhi,28.7041,77.1025,2023-06-05,Ongoing,15,15,WOAH WAHIS,https://wahis.woah.org/#/report-info?reportId=51944
+WOAH-2023-AI-003,Avian Influenza,H5N1,Poultry,Anas platyrhynchos (Duck),India,West Bengal,22.9868,87.855,2023-07-14,Resolved,740,520,WOAH WAHIS,https://wahis.woah.org/#/report-info?reportId=52410
+FAO-2023-AI-004,Avian Influenza,H5N1,Poultry,Gallus gallus (Chicken),China,Guangdong,23.1291,113.2644,2023-08-01,Resolved,3100,2800,FAO EMPRES-i,https://empresplus.fao.org/disease-events/details/39044
+FAO-2023-AI-005,Avian Influenza,H5N1,Poultry,Gallus gallus (Chicken),Egypt,Cairo,30.0444,31.2357,2023-09-19,Resolved,1850,1400,FAO EMPRES-i,https://empresplus.fao.org/disease-events/details/39412
+WOAH-2023-BRUC-001,Brucellosis,Brucella abortus,Livestock,Bos indicus (Zebu cattle),India,Gujarat,22.2587,71.1924,2023-10-08,Resolved,65,0,WOAH WAHIS,https://wahis.woah.org/#/report-info?reportId=53110

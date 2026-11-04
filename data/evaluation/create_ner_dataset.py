@@ -1,0 +1,243 @@
+"""
+Generate Ground-Truth Biomedical NER Dataset for One Health Entity Recognition
+Splits into Train (70%), Validation (15%), and Test (15%) with BIO tagging scheme.
+"""
+import json
+import os
+import random
+
+LABELS = [
+    "O",
+    "B-DISEASE", "I-DISEASE",
+    "B-ANIMAL", "I-ANIMAL",
+    "B-PATHOGEN", "I-PATHOGEN",
+    "B-LOCATION", "I-LOCATION",
+    "B-DATE", "I-DATE"
+]
+
+ANNOTATED_EXAMPLES = [
+    {
+        "tokens": ["The", "Ministry", "of", "Health", "in", "Egypt", "confirmed", "human", "cases", "of", "Avian", "influenza", "caused", "by", "H5N1", "in", "poultry", "workers", "in", "2006", "."],
+        "ner_tags": ["O", "O", "O", "O", "O", "B-LOCATION", "O", "O", "O", "O", "B-DISEASE", "I-DISEASE", "O", "O", "B-PATHOGEN", "O", "B-ANIMAL", "O", "O", "B-DATE", "O"]
+    },
+    {
+        "tokens": ["In", "Kerala", ",", "fruit", "bats", "of", "the", "Pteropus", "genus", "were", "identified", "as", "reservoirs", "of", "Nipah", "virus", "during", "the", "2018", "outbreak", "."],
+        "ner_tags": ["O", "B-LOCATION", "O", "B-ANIMAL", "I-ANIMAL", "O", "O", "B-ANIMAL", "O", "O", "O", "O", "O", "O", "B-PATHOGEN", "I-PATHOGEN", "O", "O", "B-DATE", "O", "O"]
+    },
+    {
+        "tokens": ["Nipah", "virus", "infection", "was", "reported", "in", "Kozhikode", "district", "of", "Kerala", "in", "September", "2023", "."],
+        "ner_tags": ["B-DISEASE", "I-DISEASE", "I-DISEASE", "O", "O", "O", "B-LOCATION", "O", "O", "B-LOCATION", "O", "B-DATE", "I-DATE", "O"]
+    },
+    {
+        "tokens": ["Surveillance", "of", "wild", "birds", "in", "Assam", "revealed", "high", "seroprevalence", "of", "H5N1", "avian", "influenza", "virus", "."],
+        "ner_tags": ["O", "O", "B-ANIMAL", "I-ANIMAL", "O", "B-LOCATION", "O", "O", "O", "O", "B-PATHOGEN", "B-PATHOGEN", "I-PATHOGEN", "I-PATHOGEN", "O"]
+    },
+    {
+        "tokens": ["Outbreaks", "of", "African", "swine", "fever", "have", "decimated", "domestic", "pigs", "across", "northeastern", "India", "in", "2021", "."],
+        "ner_tags": ["O", "O", "B-DISEASE", "I-DISEASE", "I-DISEASE", "O", "O", "B-ANIMAL", "I-ANIMAL", "O", "O", "B-LOCATION", "O", "B-DATE", "O"]
+    },
+    {
+        "tokens": ["Domestic", "dogs", "remain", "the", "primary", "transmission", "vector", "for", "Rabies", "caused", "by", "Lyssavirus", "in", "Delhi", "."],
+        "ner_tags": ["B-ANIMAL", "I-ANIMAL", "O", "O", "O", "O", "O", "O", "B-DISEASE", "O", "O", "B-PATHOGEN", "O", "B-LOCATION", "O"]
+    },
+    {
+        "tokens": ["In", "2020", ",", "SARS-CoV-2", "spread", "rapidly", "causing", "the", "global", "COVID-19", "pandemic", "originating", "in", "Wuhan", ",", "China", "."],
+        "ner_tags": ["O", "B-DATE", "O", "B-PATHOGEN", "O", "O", "O", "O", "O", "B-DISEASE", "O", "O", "O", "B-LOCATION", "O", "B-LOCATION", "O"]
+    },
+    {
+        "tokens": ["Cattle", "and", "buffalo", "herds", "in", "Maharashtra", "were", "vaccinated", "against", "Foot", "and", "mouth", "disease", "in", "2022", "."],
+        "ner_tags": ["B-ANIMAL", "O", "B-ANIMAL", "O", "O", "B-LOCATION", "O", "O", "O", "B-DISEASE", "I-DISEASE", "I-DISEASE", "I-DISEASE", "O", "B-DATE", "O"]
+    },
+    {
+        "tokens": ["Bacillus", "anthracis", "spores", "were", "detected", "in", "soil", "samples", "associated", "with", "dead", "sheep", "and", "goats", "in", "Tamil", "Nadu", "."],
+        "ner_tags": ["B-PATHOGEN", "I-PATHOGEN", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-ANIMAL", "O", "B-ANIMAL", "O", "B-LOCATION", "I-LOCATION", "O"]
+    },
+    {
+        "tokens": ["Mpox", "cases", "caused", "by", "monkeypox", "virus", "were", "identified", "in", "travelers", "returning", "to", "the", "United", "States", "in", "2022", "."],
+        "ner_tags": ["B-DISEASE", "O", "O", "O", "B-PATHOGEN", "I-PATHOGEN", "O", "O", "O", "O", "O", "O", "O", "B-LOCATION", "I-LOCATION", "O", "B-DATE", "O"]
+    },
+    {
+        "tokens": ["Leptospirosis", "outbreaks", "frequently", "surge", "following", "monsoon", "flooding", "in", "Mumbai", ",", "Maharashtra", "due", "to", "rodent", "urine", "."],
+        "ner_tags": ["B-DISEASE", "O", "O", "O", "O", "O", "O", "O", "B-LOCATION", "O", "B-LOCATION", "O", "O", "B-ANIMAL", "O", "O"]
+    },
+    {
+        "tokens": ["Brucella", "abortus", "infection", "causes", "chronic", "Brucellosis", "and", "abortions", "in", "dairy", "cows", "in", "Punjab", "."],
+        "ner_tags": ["B-PATHOGEN", "I-PATHOGEN", "O", "O", "O", "B-DISEASE", "O", "O", "O", "B-ANIMAL", "I-ANIMAL", "O", "B-LOCATION", "O"]
+    },
+    {
+        "tokens": ["Aedes", "mosquitoes", "transmit", "Dengue", "and", "Chikungunya", "viruses", "throughout", "urban", "centers", "in", "Karnataka", "."],
+        "ner_tags": ["B-ANIMAL", "I-ANIMAL", "O", "B-DISEASE", "O", "B-DISEASE", "O", "O", "O", "O", "O", "B-LOCATION", "O"]
+    },
+    {
+        "tokens": ["Kyasanur", "Forest", "Disease", "is", "a", "tick-borne", "viral", "hemorrhagic", "fever", "transmitted", "by", "monkeys", "in", "the", "Western", "Ghats", "of", "India", "."],
+        "ner_tags": ["B-DISEASE", "I-DISEASE", "I-DISEASE", "O", "O", "O", "O", "O", "O", "O", "O", "B-ANIMAL", "O", "O", "B-LOCATION", "I-LOCATION", "O", "B-LOCATION", "O"]
+    },
+    {
+        "tokens": ["In", "October", "2014", ",", "Ebola", "virus", "disease", "cases", "spiked", "in", "Guinea", ",", "Liberia", "and", "Sierra", "Leone", "."],
+        "ner_tags": ["O", "B-DATE", "I-DATE", "O", "B-DISEASE", "I-DISEASE", "I-DISEASE", "O", "O", "O", "B-LOCATION", "O", "B-LOCATION", "O", "B-LOCATION", "I-LOCATION", "O"]
+    },
+    {
+        "tokens": ["Scrub", "typhus", "caused", "by", "Orientia", "tsutsugamushi", "was", "diagnosed", "in", "rural", "patients", "in", "Himachal", "Pradesh", "in", "2019", "."],
+        "ner_tags": ["B-DISEASE", "I-DISEASE", "O", "O", "B-PATHOGEN", "I-PATHOGEN", "O", "O", "O", "O", "O", "O", "B-LOCATION", "I-LOCATION", "O", "B-DATE", "O"]
+    },
+    {
+        "tokens": ["Cholera", "caused", "by", "Vibrio", "cholerae", "persists", "as", "a", "waterborne", "threat", "in", "Haiti", "following", "the", "2010", "earthquake", "."],
+        "ner_tags": ["B-DISEASE", "O", "O", "B-PATHOGEN", "I-PATHOGEN", "O", "O", "O", "O", "O", "O", "B-LOCATION", "O", "O", "B-DATE", "O", "O"]
+    },
+    {
+        "tokens": ["Tuberculosis", "surveillance", "in", "China", "targets", "multidrug-resistant", "strains", "of", "Mycobacterium", "tuberculosis", "."],
+        "ner_tags": ["B-DISEASE", "O", "O", "B-LOCATION", "O", "O", "O", "O", "B-PATHOGEN", "I-PATHOGEN", "O"]
+    },
+    {
+        "tokens": ["Poultry", "farms", "in", "West", "Bengal", "culled", "thousands", "of", "chickens", "and", "ducks", "to", "contain", "avian", "influenza", "in", "2008", "."],
+        "ner_tags": ["B-ANIMAL", "O", "O", "B-LOCATION", "I-LOCATION", "O", "O", "O", "B-ANIMAL", "O", "B-ANIMAL", "O", "O", "B-DISEASE", "I-DISEASE", "O", "B-DATE", "O"]
+    },
+    {
+        "tokens": ["Malaria", "transmission", "by", "Anopheles", "mosquitoes", "remains", "endemic", "across", "sub-Saharan", "Africa", "."],
+        "ner_tags": ["B-DISEASE", "O", "O", "B-ANIMAL", "I-ANIMAL", "O", "O", "O", "O", "B-LOCATION", "O"]
+    },
+    {
+        "tokens": ["Between", "2012", "and", "2015", ",", "MERS-CoV", "was", "isolated", "from", "dromedary", "camels", "in", "Saudi", "Arabia", "."],
+        "ner_tags": ["O", "B-DATE", "O", "B-DATE", "O", "B-PATHOGEN", "O", "O", "O", "B-ANIMAL", "I-ANIMAL", "O", "B-LOCATION", "I-LOCATION", "O"]
+    },
+    {
+        "tokens": ["H5N1", "was", "isolated", "from", "dead", "swans", "and", "wild", "geese", "in", "Germany", "in", "February", "2006", "."],
+        "ner_tags": ["B-PATHOGEN", "O", "O", "O", "O", "B-ANIMAL", "O", "B-ANIMAL", "I-ANIMAL", "O", "B-LOCATION", "O", "B-DATE", "I-DATE", "O"]
+    },
+    {
+        "tokens": ["Anthrax", "outbreaks", "in", "livestock", "were", "investigated", "by", "veterinary", "authorities", "in", "Andhra", "Pradesh", "in", "2021", "."],
+        "ner_tags": ["B-DISEASE", "O", "O", "B-ANIMAL", "O", "O", "O", "O", "O", "O", "B-LOCATION", "I-LOCATION", "O", "B-DATE", "O"]
+    },
+    {
+        "tokens": ["Zika", "virus", "infection", "was", "detected", "in", "pregnant", "women", "in", "Rajasthan", "in", "November", "2018", "."],
+        "ner_tags": ["B-DISEASE", "I-DISEASE", "I-DISEASE", "O", "O", "O", "O", "O", "O", "B-LOCATION", "O", "B-DATE", "I-DATE", "O"]
+    },
+    {
+        "tokens": ["In", "2023", ",", "surveillance", "in", "Vietnam", "confirmed", "H5N1", "spillover", "from", "poultry", "to", "mammalian", "carnivores", "."],
+        "ner_tags": ["O", "B-DATE", "O", "O", "O", "B-LOCATION", "O", "B-PATHOGEN", "O", "O", "B-ANIMAL", "O", "B-ANIMAL", "I-ANIMAL", "O"]
+    },
+    {
+        "tokens": ["African", "swine", "fever", "virus", "was", "detected", "in", "feral", "pigs", "near", "the", "border", "of", "Assam", "in", "2022", "."],
+        "ner_tags": ["B-PATHOGEN", "I-PATHOGEN", "I-PATHOGEN", "I-PATHOGEN", "O", "O", "O", "B-ANIMAL", "I-ANIMAL", "O", "O", "O", "O", "B-LOCATION", "O", "B-DATE", "O"]
+    },
+    {
+        "tokens": ["Measles", "cases", "increased", "significantly", "among", "unvaccinated", "infants", "in", "Mumbai", ",", "India", "in", "late", "2022", "."],
+        "ner_tags": ["B-DISEASE", "O", "O", "O", "O", "O", "O", "O", "B-LOCATION", "O", "B-LOCATION", "O", "O", "B-DATE", "O"]
+    },
+    {
+        "tokens": ["Rousettus", "bats", "were", "confirmed", "as", "the", "natural", "reservoir", "host", "of", "Marburg", "virus", "in", "Uganda", "."],
+        "ner_tags": ["B-ANIMAL", "I-ANIMAL", "O", "O", "O", "O", "O", "O", "O", "O", "B-PATHOGEN", "I-PATHOGEN", "O", "B-LOCATION", "O"]
+    },
+    {
+        "tokens": ["Avian", "influenza", "was", "diagnosed", "in", "commercial", "poultry", "in", "Guangdong", ",", "China", "in", "January", "2023", "."],
+        "ner_tags": ["B-DISEASE", "I-DISEASE", "O", "O", "O", "O", "B-ANIMAL", "O", "B-LOCATION", "O", "B-LOCATION", "O", "B-DATE", "I-DATE", "O"]
+    },
+    {
+        "tokens": ["Brucellosis", "seropositivity", "was", "highest", "among", "veterinarians", "handling", "infected", "cattle", "in", "Gujarat", "."],
+        "ner_tags": ["B-DISEASE", "O", "O", "O", "O", "O", "O", "O", "B-ANIMAL", "O", "B-LOCATION", "O"]
+    },
+    {
+        "tokens": ["In", "2024", ",", "human", "cases", "of", "Avian", "influenza", "A", "(", "H5N1", ")", "were", "detected", "following", "exposure", "to", "dairy", "cows", "."],
+        "ner_tags": ["O", "B-DATE", "O", "O", "O", "O", "B-DISEASE", "I-DISEASE", "O", "O", "B-PATHOGEN", "O", "O", "O", "O", "O", "O", "B-ANIMAL", "I-ANIMAL", "O"]
+    },
+    {
+        "tokens": ["Aedes", "aegypti", "mosquitoes", "collected", "in", "Kerala", "tested", "positive", "for", "Dengue", "virus", "in", "June", "2023", "."],
+        "ner_tags": ["B-ANIMAL", "I-ANIMAL", "I-ANIMAL", "O", "O", "B-LOCATION", "O", "O", "O", "B-PATHOGEN", "I-PATHOGEN", "O", "B-DATE", "I-DATE", "O"]
+    },
+    {
+        "tokens": ["Wild", "boar", "carcasses", "infected", "with", "African", "swine", "fever", "virus", "were", "found", "in", "forests", "in", "Assam", "in", "2020", "."],
+        "ner_tags": ["B-ANIMAL", "I-ANIMAL", "O", "O", "O", "B-PATHOGEN", "I-PATHOGEN", "I-PATHOGEN", "I-PATHOGEN", "O", "O", "O", "O", "O", "B-LOCATION", "O", "B-DATE", "O"]
+    },
+    {
+        "tokens": ["Health", "workers", "in", "Egypt", "monitored", "backyard", "flocks", "of", "chickens", "and", "ducks", "for", "H5N1", "in", "2007", "."],
+        "ner_tags": ["O", "O", "O", "B-LOCATION", "O", "O", "O", "O", "B-ANIMAL", "O", "B-ANIMAL", "O", "B-PATHOGEN", "O", "B-DATE", "O"]
+    },
+    {
+        "tokens": ["Surveillance", "for", "Mpox", "was", "intensified", "across", "clinics", "in", "Delhi", "during", "August", "2022", "."],
+        "ner_tags": ["O", "O", "B-DISEASE", "O", "O", "O", "O", "O", "B-LOCATION", "O", "B-DATE", "I-DATE", "O"]
+    },
+    {
+        "tokens": ["Pteropus", "giganteus", "bats", "roosting", "near", "plantations", "in", "Karnataka", "shed", "Nipah", "virus", "in", "2019", "."],
+        "ner_tags": ["B-ANIMAL", "I-ANIMAL", "I-ANIMAL", "O", "O", "O", "O", "B-LOCATION", "O", "B-PATHOGEN", "I-PATHOGEN", "O", "B-DATE", "O"]
+    },
+    {
+        "tokens": ["A", "fatal", "case", "of", "Rabies", "was", "reported", "after", "a", "stray", "dog", "bite", "in", "Tamil", "Nadu", "in", "2021", "."],
+        "ner_tags": ["O", "O", "O", "O", "B-DISEASE", "O", "O", "O", "O", "B-ANIMAL", "I-ANIMAL", "O", "O", "B-LOCATION", "I-LOCATION", "O", "B-DATE", "O"]
+    },
+    {
+        "tokens": ["Vibrio", "cholerae", "contamination", "in", "drinking", "wells", "caused", "a", "severe", "Cholera", "surge", "in", "West", "Bengal", "in", "2015", "."],
+        "ner_tags": ["B-PATHOGEN", "I-PATHOGEN", "O", "O", "O", "O", "O", "O", "O", "B-DISEASE", "O", "O", "B-LOCATION", "I-LOCATION", "O", "B-DATE", "O"]
+    },
+    {
+        "tokens": ["Ticks", "belonging", "to", "Haemaphysalis", "spinigera", "were", "identified", "as", "vectors", "of", "Kyasanur", "Forest", "Disease", "in", "Shimoga", "."],
+        "ner_tags": ["B-ANIMAL", "O", "O", "B-ANIMAL", "I-ANIMAL", "O", "O", "O", "O", "O", "B-DISEASE", "I-DISEASE", "I-DISEASE", "O", "B-LOCATION", "O"]
+    },
+    {
+        "tokens": ["During", "2021", ",", "multidrug-resistant", "Tuberculosis", "prevalence", "remained", "elevated", "in", "urban", "slums", "of", "Maharashtra", "."],
+        "ner_tags": ["O", "B-DATE", "O", "O", "B-DISEASE", "O", "O", "O", "O", "O", "O", "O", "B-LOCATION", "O"]
+    },
+    {
+        "tokens": ["Plasmodium", "falciparum", "infections", "spiked", "among", "forest", "tribal", "communities", "in", "Odisha", "during", "the", "2018", "monsoon", "."],
+        "ner_tags": ["B-PATHOGEN", "I-PATHOGEN", "O", "O", "O", "O", "O", "O", "O", "B-LOCATION", "O", "O", "B-DATE", "O", "O"]
+    },
+    {
+        "tokens": ["Severe", "Chikungunya", "epidemics", "were", "linked", "to", "elevated", "densities", "of", "mosquitoes", "in", "Punjab", "in", "2016", "."],
+        "ner_tags": ["O", "B-DISEASE", "O", "O", "O", "O", "O", "O", "O", "B-ANIMAL", "O", "B-LOCATION", "O", "B-DATE", "O"]
+    },
+    {
+        "tokens": ["In", "2020", ",", "veterinarians", "quarantined", "swine", "herds", "in", "Mizoram", "due", "to", "African", "swine", "fever", "outbreaks", "."],
+        "ner_tags": ["O", "B-DATE", "O", "O", "O", "B-ANIMAL", "O", "O", "B-LOCATION", "O", "O", "B-DISEASE", "I-DISEASE", "I-DISEASE", "O", "O"]
+    },
+    {
+        "tokens": ["Goats", "and", "sheep", "exhibiting", "sudden", "mortality", "in", "Rajasthan", "were", "confirmed", "positive", "for", "Anthrax", "in", "2022", "."],
+        "ner_tags": ["B-ANIMAL", "O", "B-ANIMAL", "O", "O", "O", "O", "B-LOCATION", "O", "O", "O", "O", "B-DISEASE", "O", "B-DATE", "O"]
+    },
+    {
+        "tokens": ["H7N9", "avian", "influenza", "virus", "was", "detected", "in", "live", "poultry", "markets", "in", "Shanghai", ",", "China", "in", "2013", "."],
+        "ner_tags": ["B-PATHOGEN", "B-PATHOGEN", "I-PATHOGEN", "I-PATHOGEN", "O", "O", "O", "O", "B-ANIMAL", "O", "O", "B-LOCATION", "O", "B-LOCATION", "O", "B-DATE", "O"]
+    },
+    {
+        "tokens": ["In", "2023", ",", "Kerala", "state", "health", "authorities", "screened", "close", "contacts", "of", "two", "fatal", "Nipah", "cases", "."],
+        "ner_tags": ["O", "B-DATE", "O", "B-LOCATION", "O", "O", "O", "O", "O", "O", "O", "O", "O", "B-DISEASE", "O", "O"]
+    },
+    {
+        "tokens": ["Lyssavirus", "transmission", "was", "controlled", "through", "mass", "vaccination", "campaigns", "of", "domestic", "dogs", "in", "Goa", "in", "2017", "."],
+        "ner_tags": ["B-PATHOGEN", "O", "O", "O", "O", "O", "O", "O", "O", "B-ANIMAL", "I-ANIMAL", "O", "B-LOCATION", "O", "B-DATE", "O"]
+    },
+    {
+        "tokens": ["Orientia", "tsutsugamushi", "serum", "antibodies", "were", "detected", "in", "field", "rodents", "trapped", "in", "Himachal", "Pradesh", "in", "2021", "."],
+        "ner_tags": ["B-PATHOGEN", "I-PATHOGEN", "O", "O", "O", "O", "O", "O", "B-ANIMAL", "O", "O", "B-LOCATION", "I-LOCATION", "O", "B-DATE", "O"]
+    }
+]
+
+def create_dataset(output_dir="data/evaluation"):
+    os.makedirs(output_dir, exist_ok=True)
+    random.seed(42)
+    shuffled = list(ANNOTATED_EXAMPLES)
+    random.shuffle(shuffled)
+
+    n = len(shuffled)
+    n_train = int(n * 0.70)
+    n_val = int(n * 0.15)
+
+    splits = {
+        "train": shuffled[:n_train],
+        "validation": shuffled[n_train:n_train + n_val],
+        "test": shuffled[n_train + n_val:],
+        "labels": LABELS
+    }
+
+    out_file = os.path.join(output_dir, "biomedical_ner_dataset.json")
+    with open(out_file, "w", encoding="utf-8") as f:
+        json.dump(splits, f, indent=2)
+
+    print(f"Dataset generated at {out_file}")
+    print(f"  Train: {len(splits['train'])} examples")
+    print(f"  Validation: {len(splits['val'] if 'val' in splits else splits['validation'])} examples")
+    print(f"  Test: {len(splits['test'])} examples")
+    return splits
+
+if __name__ == "__main__":
+    splits = create_dataset()
+    assert len(splits["train"]) > 0 and len(splits["test"]) > 0
+    print("Self-check passed: Biomedical NER dataset successfully formatted.")

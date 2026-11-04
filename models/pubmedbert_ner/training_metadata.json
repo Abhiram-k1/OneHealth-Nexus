@@ -1,0 +1,45 @@
+{
+  "base_model": "microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract-fulltext",
+  "labels": [
+    "O",
+    "B-DISEASE",
+    "I-DISEASE",
+    "B-ANIMAL",
+    "I-ANIMAL",
+    "B-PATHOGEN",
+    "I-PATHOGEN",
+    "B-LOCATION",
+    "I-LOCATION",
+    "B-DATE",
+    "I-DATE"
+  ],
+  "label2id": {
+    "O": 0,
+    "B-DISEASE": 1,
+    "I-DISEASE": 2,
+    "B-ANIMAL": 3,
+    "I-ANIMAL": 4,
+    "B-PATHOGEN": 5,
+    "I-PATHOGEN": 6,
+    "B-LOCATION": 7,
+    "I-LOCATION": 8,
+    "B-DATE": 9,
+    "I-DATE": 10
+  },
+  "id2label": {
+    "0": "O",
+    "1": "B-DISEASE",
+    "2": "I-DISEASE",
+    "3": "B-ANIMAL",
+    "4": "I-ANIMAL",
+    "5": "B-PATHOGEN",
+    "6": "I-PATHOGEN",
+    "7": "B-LOCATION",
+    "8": "I-LOCATION",
+    "9": "B-DATE",
+    "10": "I-DATE"
+  },
+  "train_samples": 33,
+  "epochs": 3,
+  "train_duration_sec": 265.56098532676697
+}

@@ -1,0 +1,427 @@
+{
+  "evaluation_dataset": {
+    "total_test_sentences": 8,
+    "total_test_tokens": 132
+  },
+  "pipeline_a_existing_nlp": {
+    "accuracy": 0.8939,
+    "precision": 0.892,
+    "recall": 0.8939,
+    "f1": 0.8754,
+    "per_category": {
+      "DISEASE": {
+        "precision": 0.7857,
+        "recall": 1.0,
+        "f1": 0.88
+      },
+      "ANIMAL": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "PATHOGEN": {
+        "precision": 1.0,
+        "recall": 0.7273,
+        "f1": 0.8421
+      },
+      "LOCATION": {
+        "precision": 1.0,
+        "recall": 0.4286,
+        "f1": 0.6
+      },
+      "DATE": {
+        "precision": 1.0,
+        "recall": 0.8571,
+        "f1": 0.9231
+      }
+    },
+    "avg_latency_ms": 4.04
+  },
+  "pipeline_b_pubmedbert": {
+    "accuracy": 0.8636,
+    "precision": 0.8247,
+    "recall": 0.8636,
+    "f1": 0.8384,
+    "per_category": {
+      "DISEASE": {
+        "precision": 0.5833,
+        "recall": 0.6364,
+        "f1": 0.6087
+      },
+      "ANIMAL": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "PATHOGEN": {
+        "precision": 0.625,
+        "recall": 0.4545,
+        "f1": 0.5263
+      },
+      "LOCATION": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "DATE": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    },
+    "avg_latency_ms": 251.76
+  },
+  "confusion_matrix_labels": [
+    "O",
+    "DISEASE",
+    "ANIMAL",
+    "PATHOGEN",
+    "LOCATION",
+    "DATE"
+  ],
+  "confusion_matrix_pipeline_a": [
+    [
+      82,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      11,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      7,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      3,
+      0,
+      8,
+      0,
+      0
+    ],
+    [
+      8,
+      0,
+      0,
+      0,
+      6,
+      0
+    ],
+    [
+      1,
+      0,
+      0,
+      0,
+      0,
+      6
+    ]
+  ],
+  "confusion_matrix_pipeline_b": [
+    [
+      82,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      7,
+      0,
+      3,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      7,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      5,
+      0,
+      5,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      14,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      7
+    ]
+  ],
+  "error_analysis_samples": [
+    {
+      "sentence": "In 2020 , SARS-CoV-2 spread rapidly causing the global COVID-19 pandemic originating in Wuhan , China .",
+      "gold": [
+        "O",
+        "B-DATE",
+        "O",
+        "B-PATHOGEN",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "B-DISEASE",
+        "O",
+        "O",
+        "O",
+        "B-LOCATION",
+        "O",
+        "B-LOCATION",
+        "O"
+      ],
+      "pipeline_a": [
+        "O",
+        "B-DATE",
+        "O",
+        "B-PATHOGEN",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "B-DISEASE",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "B-LOCATION",
+        "O"
+      ],
+      "pipeline_b": [
+        "O",
+        "B-DATE",
+        "O",
+        "I-DISEASE",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "I-PATHOGEN",
+        "O",
+        "O",
+        "O",
+        "B-LOCATION",
+        "O",
+        "I-LOCATION",
+        "O"
+      ]
+    },
+    {
+      "sentence": "Bacillus anthracis spores were detected in soil samples associated with dead sheep and goats in Tamil Nadu .",
+      "gold": [
+        "B-PATHOGEN",
+        "I-PATHOGEN",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "B-ANIMAL",
+        "O",
+        "B-ANIMAL",
+        "O",
+        "B-LOCATION",
+        "I-LOCATION",
+        "O"
+      ],
+      "pipeline_a": [
+        "B-PATHOGEN",
+        "I-PATHOGEN",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "B-ANIMAL",
+        "O",
+        "B-ANIMAL",
+        "O",
+        "B-LOCATION",
+        "I-LOCATION",
+        "O"
+      ],
+      "pipeline_b": [
+        "I-DISEASE",
+        "I-DISEASE",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "B-ANIMAL",
+        "O",
+        "B-ANIMAL",
+        "O",
+        "B-LOCATION",
+        "I-LOCATION",
+        "O"
+      ]
+    },
+    {
+      "sentence": "In October 2014 , Ebola virus disease cases spiked in Guinea , Liberia and Sierra Leone .",
+      "gold": [
+        "O",
+        "B-DATE",
+        "I-DATE",
+        "O",
+        "B-DISEASE",
+        "I-DISEASE",
+        "I-DISEASE",
+        "O",
+        "O",
+        "O",
+        "B-LOCATION",
+        "O",
+        "B-LOCATION",
+        "O",
+        "B-LOCATION",
+        "I-LOCATION",
+        "O"
+      ],
+      "pipeline_a": [
+        "O",
+        "O",
+        "B-DATE",
+        "O",
+        "B-DISEASE",
+        "I-DISEASE",
+        "I-DISEASE",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O"
+      ],
+      "pipeline_b": [
+        "O",
+        "B-DATE",
+        "B-DATE",
+        "O",
+        "I-DISEASE",
+        "I-DISEASE",
+        "O",
+        "O",
+        "O",
+        "O",
+        "B-LOCATION",
+        "O",
+        "B-LOCATION",
+        "O",
+        "B-LOCATION",
+        "I-LOCATION",
+        "O"
+      ]
+    },
+    {
+      "sentence": "Scrub typhus caused by Orientia tsutsugamushi was diagnosed in rural patients in Himachal Pradesh in 2019 .",
+      "gold": [
+        "B-DISEASE",
+        "I-DISEASE",
+        "O",
+        "O",
+        "B-PATHOGEN",
+        "I-PATHOGEN",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "B-LOCATION",
+        "I-LOCATION",
+        "O",
+        "B-DATE",
+        "O"
+      ],
+      "pipeline_a": [
+        "B-DISEASE",
+        "I-DISEASE",
+        "O",
+        "O",
+        "B-PATHOGEN",
+        "I-PATHOGEN",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "B-DATE",
+        "O"
+      ],
+      "pipeline_b": [
+        "I-PATHOGEN",
+        "I-PATHOGEN",
+        "O",
+        "O",
+        "I-PATHOGEN",
+        "I-PATHOGEN",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "O",
+        "I-LOCATION",
+        "I-LOCATION",
+        "O",
+        "B-DATE",
+        "O"
+      ]
+    }
+  ]
+}

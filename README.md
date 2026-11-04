@@ -1,14 +1,20 @@
-# OneHealth Nexus: Large-Scale NLP and Temporal Knowledge Graphs for Emerging Disease Intelligence
+# OneHealth Nexus: An Evidence-Grounded Knowledge Graph for Integrated Human, Animal and Environmental Disease Intelligence
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://onehealth-nexus.streamlit.app/)
 [![GitHub Repo](https://img.shields.io/badge/GitHub-OneHealth--Nexus-blue?logo=github)](https://github.com/Abhiram-k1/OneHealth-Nexus)
-[![Data Points](https://img.shields.io/badge/Data%20Points-10%2C550%20(100%25%20Met)-success.svg)](DATA_STUDY.md)
-[![Progress](https://img.shields.io/badge/Midsem%20Progress-65%25%20(On%20Schedule)-blue.svg)](MIDSEM_PROGRESS_AND_PLAN.md)
+[![Data Points](https://img.shields.io/badge/Data%20Points-14%2C210%20(Verified)-success.svg)](END_TERM_DEVELOPMENT_PLAN.md)
+[![Progress](https://img.shields.io/badge/End--Term%20Progress-100%25%20(Completed)-brightgreen.svg)](END_TERM_DEVELOPMENT_PLAN.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-**An Integrated Big Data & Spatio-Temporal Intelligence Platform for Zoonotic Disease Surveillance**  
+**An Integrated Big Data, Comparative Biomedical NLP & Spatio-Temporal Intelligence Platform for Zoonotic Disease Surveillance**  
 **Live Cloud Dashboard:** [https://onehealth-nexus.streamlit.app/](https://onehealth-nexus.streamlit.app/)  
-**Core Technologies:** Apache Spark, Scala, spaCy, NetworkX, Streamlit, Plotly, Pandas, NCBI Entrez, GBIF API
+**Core Technologies:** Apache Spark, Scala, PyTorch, Transformers (PubMedBERT), spaCy, NetworkX, Streamlit, Plotly, Open-Meteo API, NCBI Entrez, GBIF API, WOAH WAHIS
+
+---
+
+## Academic Novelty Statement
+
+> **"OneHealth Nexus introduces an integrated, evidence-grounded One Health intelligence framework that connects disease surveillance reports, biomedical research, animal occurrence records and environmental information through a unified knowledge graph. Its distinguishing contribution is the combination of comparative biomedical NLP, cross-source evidence verification and explainable alerts, enabling users to explore interconnected human, animal and environmental health information with traceable supporting evidence."**
 
 ---
 
@@ -44,8 +50,10 @@ The platform is designed around a multi-stage data scaling architecture requirin
 ```
 
 > **Essential Project Deliverables & Reports:**
-> - [DATA_STUDY.md](DATA_STUDY.md) — 10,550+ Data Points Study, Feature Dictionaries & Phase 3 Roadmap
-> - [MIDSEM_PROGRESS_AND_PLAN.md](MIDSEM_PROGRESS_AND_PLAN.md) — Mid-Semester Progress Review (65%), 3-Phase Plan, 10-Week Timeline & Milestones
+> - [END_TERM_DEVELOPMENT_PLAN.md](END_TERM_DEVELOPMENT_PLAN.md) — End-Term Implementation Tracker (100% Completed, O1–O10 Verified)
+> - [COMPARATIVE_ANALYSIS_REPORT.md](COMPARATIVE_ANALYSIS_REPORT.md) — Comprehensive Experimental NLP Report (Existing Model vs. PubMedBERT)
+> - [DATA_STUDY.md](DATA_STUDY.md) — 14,210 Data Points Study, Feature Dictionaries & Multi-Source Schema Harmonization
+> - [MIDSEM_PROGRESS_AND_PLAN.md](MIDSEM_PROGRESS_AND_PLAN.md) — Mid-Semester Foundation Review
 > - [TA_AND_BDA_EXPLANATION.md](TA_AND_BDA_EXPLANATION.md) — Deep Academic Text Analytics & Big Data Analytics Curriculum Alignment & Viva Guide
 > - [PSEUDO.md](PSEUDO.md) — Step-by-Step Pseudocode & High-Performance Execution Walkthrough
 

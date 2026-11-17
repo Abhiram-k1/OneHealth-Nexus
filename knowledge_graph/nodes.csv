@@ -2,24 +2,24 @@ node_id,name,type,source
 1,WHO_0001,Document,WHO_DON
 2,Egypt,Location,WHO_DON
 3,2006,Date,WHO_DON
-4,Influenza,Disease,WHO_DON
-5,Avian Influenza,Disease,WHO_DON
+4,Avian Influenza,Disease,WHO_DON
+5,Influenza,Disease,WHO_DON
 6,Influenza A / H5N1,Pathogen,WHO_DON
 7,Poultry / Avian Host,Animal,WHO_DON
 8,WHO_0002,Document,WHO_DON
 9,2009,Date,WHO_DON
 10,WHO_0003,Document,WHO_DON
 11,Pakistan,Location,WHO_DON
-12,2019,Date,WHO_DON
-13,2003,Date,WHO_DON
+12,2003,Date,WHO_DON
+13,2019,Date,WHO_DON
 14,2016,Date,WHO_DON
 15,WHO_0004,Document,WHO_DON
-16,Saudi Arabia,Location,WHO_DON
-17,Germany,Location,WHO_DON
-18,France,Location,WHO_DON
-19,United Kingdom,Location,WHO_DON
-20,2013,Date,WHO_DON
-21,2012,Date,WHO_DON
+16,United Kingdom,Location,WHO_DON
+17,Saudi Arabia,Location,WHO_DON
+18,Germany,Location,WHO_DON
+19,France,Location,WHO_DON
+20,2012,Date,WHO_DON
+21,2013,Date,WHO_DON
 22,SARS-CoV-2,Pathogen,WHO_DON
 23,WHO_0005,Document,WHO_DON
 24,China,Location,WHO_DON
@@ -44,8 +44,8 @@ node_id,name,type,source
 43,WHO_0015,Document,WHO_DON
 44,WHO_0016,Document,WHO_DON
 45,Democratic Republic of the Congo,Location,WHO_DON
-46,2017,Date,WHO_DON
-47,2018,Date,WHO_DON
+46,2018,Date,WHO_DON
+47,2017,Date,WHO_DON
 48,WHO_0017,Document,WHO_DON
 49,2007,Date,WHO_DON
 50,WHO_0018,Document,WHO_DON
@@ -56,9 +56,9 @@ node_id,name,type,source
 55,WHO_0021,Document,WHO_DON
 56,Ebola,Disease,WHO_DON
 57,Ebolavirus,Pathogen,WHO_DON
-58,Non-Human Primate,Animal,WHO_DON
+58,Cattle / Livestock,Animal,WHO_DON
 59,Bat (Chiroptera),Animal,WHO_DON
-60,Cattle / Livestock,Animal,WHO_DON
+60,Non-Human Primate,Animal,WHO_DON
 61,WHO_0022,Document,WHO_DON
 62,WHO_0023,Document,WHO_DON
 63,Influenza A / H7N9,Pathogen,WHO_DON
@@ -69,11 +69,11 @@ node_id,name,type,source
 68,2022,Date,WHO_DON
 69,2021,Date,WHO_DON
 70,WHO_0027,Document,WHO_DON
-71,India,Location,WHO_DON
-72,Nepal,Location,WHO_DON
-73,Brazil,Location,WHO_DON
-74,Thailand,Location,WHO_DON
-75,Bangladesh,Location,WHO_DON
+71,Nepal,Location,WHO_DON
+72,India,Location,WHO_DON
+73,Thailand,Location,WHO_DON
+74,Bangladesh,Location,WHO_DON
+75,Brazil,Location,WHO_DON
 76,WHO_0028,Document,WHO_DON
 77,2023,Date,WHO_DON
 78,WHO_0029,Document,WHO_DON
@@ -94,8 +94,8 @@ node_id,name,type,source
 93,WHO_0036,Document,WHO_DON
 94,WHO_0037,Document,WHO_DON
 95,WHO_0038,Document,WHO_DON
-96,1991,Date,WHO_DON
-97,1988,Date,WHO_DON
+96,1988,Date,WHO_DON
+97,1991,Date,WHO_DON
 98,WHO_0039,Document,WHO_DON
 99,WHO_0040,Document,WHO_DON
 100,WHO_0041,Document,WHO_DON
@@ -180,9 +180,9 @@ node_id,name,type,source
 179,Anthrax,Disease,PubMed
 180,PUBMED_42780870,Document,PubMed
 181,PUBMED_42780858,Document,PubMed
-182,1967,Date,PubMed
-183,1976,Date,PubMed
-184,1984,Date,PubMed
+182,1984,Date,PubMed
+183,1967,Date,PubMed
+184,1976,Date,PubMed
 185,Lyssavirus (Rabies),Pathogen,PubMed
 186,PUBMED_42780750,Document,PubMed
 187,1990,Date,PubMed
@@ -566,9 +566,9 @@ node_id,name,type,source
 565,PUBMED_42698673,Document,PubMed
 566,PUBMED_42698579,Document,PubMed
 567,PUBMED_42697353,Document,PubMed
-568,2060,Date,PubMed
+568,2041,Date,PubMed
 569,2081,Date,PubMed
-570,2041,Date,PubMed
+570,2060,Date,PubMed
 571,PUBMED_42696224,Document,PubMed
 572,PUBMED_42696215,Document,PubMed
 573,PUBMED_42696199,Document,PubMed
@@ -1625,8 +1625,8 @@ node_id,name,type,source
 1624,PUBMED_3864449,Document,PubMed
 1625,1983,Date,PubMed
 1626,PUBMED_6500865,Document,PubMed
-1627,1982,Date,PubMed
-1628,1971,Date,PubMed
+1627,1971,Date,PubMed
+1628,1982,Date,PubMed
 1629,PUBMED_7136476,Document,PubMed
 1630,1929,Date,PubMed
 1631,PUBMED_7128092,Document,PubMed
